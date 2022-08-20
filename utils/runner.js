@@ -28,6 +28,10 @@ async function shuffleRunner() {
   }
 
   setInterval(async function () {
+    if (!newInfo) {
+      return;
+    }
+    
     shuffle(newInfo);
     // console.log(newInfo[0]);
 
