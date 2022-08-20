@@ -84,7 +84,7 @@ async function shuffleRunner() {
         );
         console.log("No data");
       });
-  }, 1000);
+  }, 180000);
 }
 
 async function slackNotify() {
