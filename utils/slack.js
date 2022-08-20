@@ -3,12 +3,12 @@ const { SLACK_WEBHOOK } = require("../utils/config");
 
 const webhook = new IncomingWebhook(SLACK_WEBHOOK);
 
-const dataCount = async (data) =>
+const dataCount = async (message, title, data) =>
   await webhook.send({
-    text: `Number saved`,
+    text: `${message}`,
     attachments: [
       {
-        fields: [{ title: "Save count", value: data, short: true }],
+        fields: [{ title: `${title}`, value: data, short: true }],
       },
     ],
   });
