@@ -1,5 +1,6 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
 const Numbers = require("../db/numbers");
+const { dataCount } = require("./slack");
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -31,7 +32,7 @@ async function shuffleRunner() {
     if (!newInfo) {
       return;
     }
-    
+
     shuffle(newInfo);
     // console.log(newInfo[0]);
 
@@ -86,6 +87,14 @@ async function shuffleRunner() {
   }, 1000);
 }
 
+async function slackNotify() {
+  setInterval(async function () {
+    const data = await Numbers.where("bank_id", "28").countDocuments();
+    dataCount(data);
+  }, 1800000);
+}
+
 module.exports = {
   shuffleRunner,
+  slackNotify,
 };
