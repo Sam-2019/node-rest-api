@@ -1,12 +1,25 @@
 const mongoose = require("mongoose");
 
 const dataSchema = new mongoose.Schema({
-  id: {
+  id_number: {
     type: Number,
-    required: true,
   },
   number: {
-    required: true,
+    type: String,
+  },
+  name: {
+    type: String,
+  },
+  account_number: {
+    type: String,
+  },
+  bank_id: {
+    type: String,
+  },
+  momo_active: {
+    type: String,
+  },
+  message: {
     type: String,
   },
 });
