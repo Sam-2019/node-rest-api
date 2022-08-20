@@ -29,8 +29,7 @@ async function shuffleRunner() {
 
   setInterval(async function () {
     shuffle(newInfo);
-
-    console.log(newInfo[0]);
+    // console.log(newInfo[0]);
 
     if (newInfo[0].name && newInfo[0].momo_active) {
       return;
@@ -45,12 +44,12 @@ async function shuffleRunner() {
         account_number: `${newInfo[0].number}`,
         bank_code: "MTN",
       })
-      .then(function (body) {
+      .then(async function (body) {
         await Numbers.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
-              name:  body.data.account_name,
+              name: body.data.account_name,
               account_number: body.data.account_number,
               bank_id: body.data.bank_id,
               momo_active: body.data.momo_active,
@@ -63,18 +62,22 @@ async function shuffleRunner() {
         console.log("data updated");
       })
       .catch(async function (error) {
+        if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
+          return;
+        }
+
         await Numbers.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
-              message:  error.error.message,
+              message: error.error.message,
             },
           },
           {
             new: false,
           }
         );
-        console.log("error recorded");
+        console.log("No data");
       });
   }, 1000);
 }
