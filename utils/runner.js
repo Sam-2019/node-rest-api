@@ -1,6 +1,4 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
-const ValidNumbers = require("../db/valid");
-const InvalidNumbers = require("../db/invalid");
 const Numbers = require("../db/numbers");
 
 function shuffle(array) {
@@ -29,43 +27,55 @@ async function shuffleRunner() {
     console.log(error.message);
   }
 
-  setInterval(function () {
+  setInterval(async function () {
     shuffle(newInfo);
 
-    console.log(newInfo[0].number);
+    console.log(newInfo[0]);
 
-    // paystack.verification
-    //   .resolveAccount({
-    //     account_number: `${newInfo[0].number}`,
-    //     bank_code: "MTN",
-    //   })
-    //   .then(function (body) {
-    //     const entry = ValidNumbers.findOne({ phone: newInfo[0].number });
+    if (newInfo[0].name && newInfo[0].momo_active) {
+      return;
+    }
 
-    //     if (entry) {
-    //       console.log("entry exits");
-    //       return;
-    //     }
+    if (newInfo[0].message) {
+      return;
+    }
 
-    //     const data = new ValidNumbers({
-    //       name: body.data.account_name,
-    //       phone: body.data.account_number,
-    //       account_number: body.data.account_number,
-    //       bank_id: body.data.bank_id,
-    //       momo_active: "yes",
-    //     });
-
-    //     data.save();
-    //     console.log("data saved");
-    //   })
-    //   .catch(function (error) {
-    //     const data = new InvalidNumbers({
-    //       phone: newInfo[0].number,
-    //       momo_active: "no",
-    //     });
-    //     data.save();
-    //     console.log(error.error.message);
-    //   });
+    paystack.verification
+      .resolveAccount({
+        account_number: `${newInfo[0].number}`,
+        bank_code: "MTN",
+      })
+      .then(function (body) {
+        await Numbers.findByIdAndUpdate(
+          newInfo[0].id,
+          {
+            $set: {
+              name:  body.data.account_name,
+              account_number: body.data.account_number,
+              bank_id: body.data.bank_id,
+              momo_active: body.data.momo_active,
+            },
+          },
+          {
+            new: false,
+          }
+        );
+        console.log("data updated");
+      })
+      .catch(async function (error) {
+        await Numbers.findByIdAndUpdate(
+          newInfo[0].id,
+          {
+            $set: {
+              message:  error.error.message,
+            },
+          },
+          {
+            new: false,
+          }
+        );
+        console.log("error recorded");
+      });
   }, 1000);
 }
 
