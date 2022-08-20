@@ -1,10 +1,10 @@
 const express = require("express");
-const ValidNumbers = require("../db/valid");
+const Numbers = require("../db/numbers");
 const router = express.Router();
 
 //Post Method
 // router.post('/post', async (req, res) => {
-//     const data = new ValidNumbers({
+//     const data = new Numbers({
 //         name: req.body.name,
 //         age: req.body.age
 //     })
@@ -21,7 +21,7 @@ const router = express.Router();
 //Get all Method
 router.get("/get_names", async (req, res) => {
   try {
-    const data = await ValidNumbers.find();
+    const data = await Numbers.find();
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -31,7 +31,7 @@ router.get("/get_names", async (req, res) => {
 // Get by ID Method
 router.get("/gwt_name/:id", async (req, res) => {
   try {
-    const data = await ValidNumbers.findOne({ phone: req.params.id });
+    const data = await Numbers.findOne({ phone: req.params.id });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -45,7 +45,7 @@ router.get("/gwt_name/:id", async (req, res) => {
 //         const updatedData = req.body;
 //         const options = { new: true };
 
-//         const result = await ValidNumbers.findByIdAndUpdate(
+//         const result = await Numbers.findByIdAndUpdate(
 //             id, updatedData, options
 //         )
 
