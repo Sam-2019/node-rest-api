@@ -1,6 +1,6 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
 const Numbers = require("../db/numbers");
-const { dataCount } = require("./slack");
+const { slackNotify } = require("./slack");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
 
@@ -69,7 +69,7 @@ async function shuffleRunner() {
 
         if (update) {
           const data = await Numbers.where("bank_id", "28").countDocuments();
-          dataCount("Numbers saved", "Save count", data);
+          slackNotify("Numbers saved", "Save count", data);
         }
         console.log("data updated");
       })
@@ -94,15 +94,15 @@ async function shuffleRunner() {
   }, SET_INTERVAL);
 }
 
-// async function slackNotify() {
+// async function slackUpdate() {
 //   setInterval(async function () {
 //     const data = await Numbers.where("bank_id", "28").countDocuments();
-//     dataCount("Numbers saved", "Save count", data);
+//     slackNotify("Numbers saved", "Save count", data);
 //   }, SET_INTERVAL);
 // }
 
 module.exports = {
   shuffleRunner,
-  slackNotify,
   ping,
+  // slackUpdate
 };

@@ -3,7 +3,7 @@ const { SLACK_WEBHOOK } = require("../utils/config");
 
 const webhook = new IncomingWebhook(SLACK_WEBHOOK);
 
-const dataCount = async (message, title, data) =>
+const slackNotify = async (message, title, data) =>
   await webhook.send({
     text: `${message}`,
     attachments: [
@@ -14,5 +14,5 @@ const dataCount = async (message, title, data) =>
   });
 
 module.exports = {
-  dataCount,
+  slackNotify,
 };
