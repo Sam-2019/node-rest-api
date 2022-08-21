@@ -98,5 +98,5 @@ async function slackUpdate() {
 module.exports = {
   shuffleRunner,
   ping,
-  slackUpdate
+  slackUpdate,
 };
