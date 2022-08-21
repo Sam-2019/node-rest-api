@@ -17,6 +17,7 @@
     "express": "^4.17.3",
     "mongoose": "^6.5.2",
     "nodemon": "^2.0.19",
-    "paystack-api": "^2.0.6"
+    "paystack-api": "^2.0.6",
+    "telegraf": "^4.8.6"
   }
 }
