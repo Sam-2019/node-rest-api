@@ -52,7 +52,7 @@ async function shuffleRunner() {
         bank_code: "MTN",
       })
       .then(async function (body) {
-        await Numbers.findByIdAndUpdate(
+        const update = await Numbers.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
@@ -66,6 +66,11 @@ async function shuffleRunner() {
             new: false,
           }
         );
+
+        if (update) {
+          const data = await Numbers.where("bank_id", "28").countDocuments();
+          dataCount("Numbers saved", "Save count", data);
+        }
         console.log("data updated");
       })
       .catch(async function (error) {
@@ -89,12 +94,12 @@ async function shuffleRunner() {
   }, SET_INTERVAL);
 }
 
-async function slackNotify() {
-  setInterval(async function () {
-    const data = await Numbers.where("bank_id", "28").countDocuments();
-    dataCount("Numbers saved", "Save count", data);
-  }, SET_INTERVAL);
-}
+// async function slackNotify() {
+//   setInterval(async function () {
+//     const data = await Numbers.where("bank_id", "28").countDocuments();
+//     dataCount("Numbers saved", "Save count", data);
+//   }, SET_INTERVAL);
+// }
 
 module.exports = {
   shuffleRunner,
