@@ -4,6 +4,7 @@ const PORT = process.env.PORT;
 const NIMBLE = process.env.NIMBLE;
 const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK;
 const SET_INTERVAL = process.env.SET_INTERVAL;
+const TOKEN = process.env.TELEGRAM_TOKEN;
 
 module.exports = {
   DB_URI,
@@ -12,4 +13,5 @@ module.exports = {
   PORT,
   SLACK_WEBHOOK,
   SET_INTERVAL,
+  TOKEN,
 };
