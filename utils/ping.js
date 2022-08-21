@@ -1,5 +1,5 @@
 const axios = require("axios");
-const dataCount = require("./slack");
+const slackNotify = require("./slack");
 const { SET_INTERVAL } = require("./config");
 
 function ping() {
@@ -8,7 +8,7 @@ function ping() {
       .get("https://helliomessaging.com")
       .then((res) => {
         if (res.status != 200) {
-          dataCount("HelioSMS", "server is down", 0);
+          slackNotify("HelioSMS", "server is down", 0);
           return;
         }
 
@@ -16,7 +16,7 @@ function ping() {
         const find = info.includes("Hellio provides an API-first Caa");
 
         if (find === false) {
-          dataCount("HelioSMS", "server is down", 0);
+          slackNotify("HelioSMS", "server is down", 0);
           return;
         }
       })
