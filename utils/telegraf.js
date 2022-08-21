@@ -4,7 +4,9 @@ const Numbers = require("../db/numbers");
 const { MESSAGE, ID } = require("./constants");
 const bot = new Telegraf(TOKEN);
 
-bot.use(Telegraf.log());
+bot.command("ping", async (ctx) => {
+  ctx.reply("app pinged!");
+});
 
 bot.command("saved", async (ctx) => {
   const data = await Numbers.where("bank_id", ID).countDocuments();
