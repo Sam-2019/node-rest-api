@@ -66,12 +66,6 @@ async function shuffleRunner() {
             new: false,
           }
         );
-
-        if (update) {
-          const data = await Numbers.where("bank_id", "28").countDocuments();
-          slackNotify("Numbers saved", "Save count", data);
-        }
-        console.log("data updated");
       })
       .catch(async function (error) {
         if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
@@ -94,15 +88,15 @@ async function shuffleRunner() {
   }, SET_INTERVAL);
 }
 
-// async function slackUpdate() {
-//   setInterval(async function () {
-//     const data = await Numbers.where("bank_id", "28").countDocuments();
-//     slackNotify("Numbers saved", "Save count", data);
-//   }, SET_INTERVAL);
-// }
+async function slackUpdate() {
+  setInterval(async function () {
+    const data = await Numbers.where("bank_id", "28").countDocuments();
+    slackNotify("Numbers saved", "Save count", data);
+  }, SET_INTERVAL);
+}
 
 module.exports = {
   shuffleRunner,
   ping,
-  // slackUpdate
+  slackUpdate
 };
