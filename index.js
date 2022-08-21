@@ -3,6 +3,7 @@ const cors = require("cors");
 const express = require("express");
 const { PORT, NODE_ENV } = require("./utils/config");
 const { shuffleRunner, ping } = require("./utils/runner");
+const { bot } = require("./utils/telegraf");
 
 require("./db/index");
 
@@ -14,6 +15,7 @@ const routes = require("./routes/routes");
 app.use("/api", routes);
 shuffleRunner();
 ping();
+bot.launch();
 
 const port = PORT || 4000;
 
