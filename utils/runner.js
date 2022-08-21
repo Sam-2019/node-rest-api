@@ -2,6 +2,7 @@ const paystack = require("paystack-api")(process.env.NIMBLE);
 const Numbers = require("../db/numbers");
 const { dataCount } = require("./slack");
 const { ping } = require("./ping");
+const { SET_INTERVAL } = require("./config");
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -85,14 +86,14 @@ async function shuffleRunner() {
         );
         console.log("No data");
       });
-  }, 180000);
+  }, SET_INTERVAL);
 }
 
 async function slackNotify() {
   setInterval(async function () {
     const data = await Numbers.where("bank_id", "28").countDocuments();
-    dataCount('Numbers saved', 'Save count', data);
-  }, 1800000);
+    dataCount("Numbers saved", "Save count", data);
+  }, SET_INTERVAL);
 }
 
 module.exports = {

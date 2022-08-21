@@ -1,5 +1,6 @@
 const axios = require("axios");
 const dataCount = require("./slack");
+const { SET_INTERVAL } = require("./config");
 
 function ping() {
   setInterval(async function () {
@@ -22,7 +23,7 @@ function ping() {
       .catch((error) => {
         console.error(error);
       });
-  }, 1800000);
+  }, SET_INTERVAL);
 }
 
 ping();
