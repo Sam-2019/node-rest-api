@@ -1,0 +1,24 @@
+const { Telegraf } = require("telegraf");
+const { TOKEN } = require("./config");
+const Numbers = require("../db/numbers");
+const { MESSAGE, ID } = require("./constants");
+const bot = new Telegraf(TOKEN);
+
+bot.use(Telegraf.log());
+
+bot.command("saved", async (ctx) => {
+  const data = await Numbers.where("bank_id", ID).countDocuments();
+  ctx.reply(`Saved ${data}`);
+});
+
+bot.command("failed", async (ctx) => {
+  const data = await Numbers.where("message", MESSAGE).countDocuments();
+  ctx.reply(`Failed ${data}`);
+});
+
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));
+
+module.exports = {
+  bot,
+};
