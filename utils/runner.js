@@ -25,7 +25,8 @@ async function shuffleRunner() {
   let newInfo;
 
   try {
-    newInfo = await Numbers.find();
+    newInfo = await Numbers.find({ bank_id: null }).countDocuments();
+
   } catch (error) {
     console.log(error.message);
   }
