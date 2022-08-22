@@ -26,7 +26,6 @@ async function shuffleRunner() {
 
   try {
     newInfo = await Numbers.find({ bank_id: null }).countDocuments();
-
   } catch (error) {
     console.log(error.message);
   }
@@ -53,7 +52,7 @@ async function shuffleRunner() {
         bank_code: "MTN",
       })
       .then(async function (body) {
-        const update = await Numbers.findByIdAndUpdate(
+        await Numbers.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
