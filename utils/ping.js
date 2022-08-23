@@ -3,6 +3,17 @@ const { slackNotify } = require("./slack");
 const { SET_INTERVAL } = require("./config");
 const { HELIOSMS1 } = require("./constants");
 
+async function pingHellio() {
+  try {
+    const response = await axios.get("https://helliomessaging.com");
+    if (response) {
+      return "HellioSMS: server is up";
+    }
+  } catch (error) {
+    return "HellioSMS", "server is down";
+  }
+}
+
 function ping() {
   setInterval(async function () {
     axios
@@ -10,8 +21,8 @@ function ping() {
       .then((res) => {
         console.log({ res: res.status });
         // if (res.status != 200) {
-        slackNotify("HelioSMS", "server is up");
-        console.log("HelioSMS: server is up");
+        slackNotify("HellioSMS", "server is up");
+        console.log("HellioSMS: server is up");
         //   return;
         // }
 
@@ -19,7 +30,7 @@ function ping() {
         // const find = info.includes("Hellio provides an API-first Caa");
 
         // if (find === false) {
-        //   slackNotify("HelioSMS", "server is down", 0);
+        //   slackNotify("HellioSMS", "server is down", 0);
         //   return;
         // }
       })
@@ -28,9 +39,9 @@ function ping() {
         const deliveryIssues = error.includes(HELIOSMS1);
 
         if (deliveryIssues === true) {
-          slackNotify("HelioSMS", "server is down");
+          slackNotify("HellioSMS", "server is down");
         }
-        console.log("HelioSMS: server is down");
+        console.log("HellioSMS: server is down");
       });
   }, SET_INTERVAL);
 }
@@ -39,4 +50,5 @@ ping();
 
 module.exports = {
   ping,
+  pingHellio,
 };
