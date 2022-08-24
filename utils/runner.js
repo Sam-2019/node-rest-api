@@ -3,6 +3,7 @@ const Numbers = require("../db/numbers");
 const { slackNotify } = require("./slack");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
+const { getDataIDS, getSaved } = require("../db/repositories");
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -25,7 +26,7 @@ async function shuffleRunner() {
   let newInfo;
 
   try {
-    newInfo = await Numbers.find({ bank_id: null, message: null })
+    newInfo = await getDataIDS();
   } catch (error) {
     console.log(error.message);
   }
@@ -72,6 +73,10 @@ async function shuffleRunner() {
           return;
         }
 
+        if (error.error.message === "Endpoint request timed out") {
+          return;
+        }
+
         await Numbers.findByIdAndUpdate(
           newInfo[0].id,
           {
@@ -88,15 +93,7 @@ async function shuffleRunner() {
   }, SET_INTERVAL);
 }
 
-async function slackUpdate() {
-  setInterval(async function () {
-    const data = await Numbers.where("bank_id", "28").countDocuments();
-    slackNotify("Numbers saved", "Save count", data);
-  }, SET_INTERVAL);
-}
-
 module.exports = {
   shuffleRunner,
   ping,
-  slackUpdate,
 };
