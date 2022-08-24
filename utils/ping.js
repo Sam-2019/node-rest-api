@@ -10,8 +10,7 @@ async function pingHellio() {
       return "HellioSMS: server is up";
     }
   } catch (error) {
-    console.log(error)
-//     return "HellioSMS", "server is down";
+    return "HellioSMS: server is down";
   }
 }
 
@@ -22,21 +21,23 @@ function ping() {
       .then((res) => {
         console.log({ res: res.status });
         console.log({info: res.data})
-        // if (res.status != 200) {
+//          if (res.status != 200) {
 //         slackNotify("HellioSMS", "server is up");
 //         console.log("HellioSMS: server is up");
-        //   return;
-        // }
+//           return;
+//         }
 
-        // const info = res.data;
-        // const find = info.includes("Hellio provides an API-first Caa");
+//         const info = res.data;
+//         const find = info.includes("Hellio provides an API-first Caa");
 
-        // if (find === false) {
-        //   slackNotify("HellioSMS", "server is down", 0);
-        //   return;
-        // }
+//         if (find === false) {
+//           slackNotify("HellioSMS", "server is down", 0);
+//           return;
+//         }
+      console.log("HellioSMS: server is up");
       })
       .catch((error) => {
+        console.log("HellioSMS: server is down");
         console.error(error);
 //         const deliveryIssues = error.includes(HELIOSMS1);
 //       console.log(deliveryIssues)
@@ -44,7 +45,6 @@ function ping() {
 //         if (deliveryIssues === true) {
 //           slackNotify("HellioSMS", "server is down");
 //         }
-//         console.log("HellioSMS: server is down");
       });
   }, SET_INTERVAL);
 }
