@@ -3,7 +3,7 @@ const Numbers = require("../db/numbers");
 const { slackNotify } = require("./slack");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, getSaved } = require("../db/repositories");
+const { getDataIDS } = require("../db/repositories");
 
 function shuffle(array) {
   var currentIndex = array.length,
