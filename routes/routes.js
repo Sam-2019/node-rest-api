@@ -14,7 +14,7 @@ router.get("/get_names", async (req, res) => {
 });
 
 // Get by ID Method
-router.get("/gwt_name/:id", async (req, res) => {
+router.get("/get_name/:id", async (req, res) => {
   try {
     // const data = await Numbers.findOne({ phone: req.params.id });
     // res.json(data);
