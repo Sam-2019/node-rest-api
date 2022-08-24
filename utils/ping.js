@@ -19,32 +19,13 @@ function ping() {
     axios
       .get("https://helliomessaging.com")
       .then((res) => {
-        console.log({ res: res.status });
-        console.log({info: res.data})
-//          if (res.status != 200) {
-//         slackNotify("HellioSMS", "server is up");
-//         console.log("HellioSMS: server is up");
-//           return;
-//         }
-
-//         const info = res.data;
-//         const find = info.includes("Hellio provides an API-first Caa");
-
-//         if (find === false) {
-//           slackNotify("HellioSMS", "server is down", 0);
-//           return;
-//         }
+      console.log({ res: res.status });
       console.log("HellioSMS: server is up");
       })
       .catch((error) => {
-        console.log("HellioSMS: server is down");
-        console.error(error);
-//         const deliveryIssues = error.includes(HELIOSMS1);
-//       console.log(deliveryIssues)
-
-//         if (deliveryIssues === true) {
-//           slackNotify("HellioSMS", "server is down");
-//         }
+      console.log("HellioSMS: server is down");
+      slackNotify("HellioSMS", error);
+      console.log(error);
       });
   }, SET_INTERVAL);
 }
