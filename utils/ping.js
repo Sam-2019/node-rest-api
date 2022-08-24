@@ -1,31 +1,31 @@
 const axios = require("axios");
 const { slackNotify } = require("./slack");
 const { SET_INTERVAL } = require("./config");
-const { HELIOSMS1 } = require("./constants");
+const { HELIOSDOWN, HELIOSUP, HELIOSURL } = require("./constants");
 
 async function pingHellio() {
   try {
-    const response = await axios.get("https://helliomessaging.com");
+    const response = await axios.get(HELIOSURL);
     if (response) {
-      return "HellioSMS: server is up";
+      return HELIOSUP;
     }
   } catch (error) {
-    return "HellioSMS: server is down";
+    return HELIOSDOWN;
   }
 }
 
 function ping() {
   setInterval(async function () {
     axios
-      .get("https://helliomessaging.com")
+      .get(HELIOSURL)
       .then((res) => {
-      console.log({ res: res.status });
-      console.log("HellioSMS: server is up");
+        // console.log({ res: res.status });
+        console.log(HELIOSUP);
       })
       .catch((error) => {
-      console.log("HellioSMS: server is down");
-      slackNotify("HellioSMS", error);
-      console.log(error);
+        console.log(HELIOSDOWN);
+        slackNotify("HellioSMS", error);
+        // console.log(error);
       });
   }, SET_INTERVAL);
 }
