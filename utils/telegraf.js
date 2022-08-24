@@ -1,8 +1,7 @@
 const { Telegraf } = require("telegraf");
 const { TOKEN } = require("./config");
-const Numbers = require("../db/numbers");
-const { MESSAGE, ID } = require("./constants");
 const { pingHellio } = require("./ping");
+const { getSaved, getFailed, getDataIDS } = require("../db/repositories");
 const bot = new Telegraf(TOKEN);
 
 bot.command("ping", async (ctx) => {
@@ -10,13 +9,18 @@ bot.command("ping", async (ctx) => {
 });
 
 bot.command("saved", async (ctx) => {
-  const data = await Numbers.where("bank_id", ID).countDocuments();
+  const data = await getSaved();
   ctx.reply(`Saved ${data}`);
 });
 
 bot.command("failed", async (ctx) => {
-  const data = await Numbers.where("message", MESSAGE).countDocuments();
+  const data = await getFailed();
   ctx.reply(`Failed ${data}`);
+});
+
+bot.command("rawIDs", async (ctx) => {
+  const data = await getDataIDS();
+  ctx.reply(`Untouched ${data}`);
 });
 
 bot.command("hellio", async (ctx) => {
