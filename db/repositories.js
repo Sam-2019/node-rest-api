@@ -24,6 +24,7 @@ module.exports = {
   getSaved,
   getFailed,
   getDataIDS,
+  getRemaining,
   getAll,
   getOne,
 };
