@@ -2,7 +2,7 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const { PORT, NODE_ENV } = require("./utils/config");
-const { shuffleRunner, ping, slackUpdate } = require("./utils/runner");
+const { shuffleRunner, ping } = require("./utils/runner");
 const { bot } = require("./utils/telegraf");
 
 require("./db/index");
@@ -14,7 +14,6 @@ app.use(express.json());
 const routes = require("./routes/routes");
 app.use("/api", routes);
 shuffleRunner();
-slackUpdate();
 ping();
 bot.launch();
 
