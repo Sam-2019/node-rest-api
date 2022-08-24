@@ -8,7 +8,7 @@ const getFailed = async () => {
   return await Numbers.where("message", MESSAGE).countDocuments();
 };
 const getDataIDS = async () => {
-  return await Numbers.find({ bank_id: null, message: null });
+  return await Numbers.find({ bank_id: null, message: null }).countDocuments();
 };
 const getAll = async () => {
   return await Numbers.find();
