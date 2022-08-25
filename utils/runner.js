@@ -26,8 +26,14 @@ async function shuffleRunner() {
   let newInfo;
 
   try {
-    newInfo = await getDataIDS();
-  } catch (error) {
+    const data = await getDataIDS();
+    
+    if (data.length === 0) {
+      return;
+    }
+    
+    newInfo = data
+   } catch (error) {
     console.log(error.message);
   }
 
