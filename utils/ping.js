@@ -20,6 +20,7 @@ function ping() {
       .get(HELIOSURL)
       .then((res) => {
         // console.log({ res: res.status });
+//        slackNotify("HellioSMS", res);
         console.log(HELIOSUP);
       })
       .catch((error) => {
