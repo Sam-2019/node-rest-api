@@ -8,7 +8,7 @@ const slackNotify = async (message, title, data = null) =>
     text: `${message}`,
     attachments: [
       {
-        fields: [{ title: `${title}`, value: data, short: true }],
+        fields: [{ title: `${title}`, value: data, short: false }],
       },
     ],
   });
