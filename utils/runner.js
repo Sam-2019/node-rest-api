@@ -3,7 +3,7 @@ const Numbers = require("../db/numbers");
 const { slackNotify } = require("./slack");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS } = require("../db/repositories");
+const { getDataIDS, getFailedIDS } = require("../db/repositories");
 const { getData } = require("./constants");
 
 function shuffle(array) {
@@ -27,7 +27,7 @@ async function shuffleRunner() {
   let newInfo;
 
   try {
-    const data = await getDataIDS();
+    const data = await getFailedIDS();
 
     if (data.length === 0) {
       return;
@@ -45,13 +45,13 @@ async function shuffleRunner() {
 
     shuffle(newInfo);
 
-    if (newInfo[0].name && newInfo[0].momo_active) {
-      return;
-    }
+    // if (newInfo[0].name && newInfo[0].momo_active) {
+    //   return;
+    // }
 
-    if (newInfo[0].message) {
-      return;
-    }
+    // if (newInfo[0].message) {
+    //   return;
+    // }
 
     const result = getData(newInfo[0].number);
 
