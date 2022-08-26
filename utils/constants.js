@@ -43,8 +43,8 @@ function getData(data) {
  return;
 }
 
-const info = getData(number);
-console.log({ info });
+// const info = getData(number);
+// console.log({ info });
 
 
 module.exports = {
