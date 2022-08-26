@@ -10,6 +10,10 @@ const getFailed = async () => {
 const getDataIDS = async () => {
   return await Numbers.find({ bank_id: null, message: null });
 };
+const getFailedIDS = async () => {
+  return await Numbers.find({ message: MESSAGE });
+};
+
 const getRemaining = async () => {
   return await Numbers.find({ bank_id: null, message: null }).countDocuments();
 };
@@ -24,6 +28,7 @@ module.exports = {
   getSaved,
   getFailed,
   getDataIDS,
+  getFailedIDS,
   getRemaining,
   getAll,
   getOne,
