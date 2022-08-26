@@ -4,6 +4,7 @@ const { slackNotify } = require("./slack");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
 const { getDataIDS } = require("../db/repositories");
+const { getData } = require("./constants");
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -27,13 +28,13 @@ async function shuffleRunner() {
 
   try {
     const data = await getDataIDS();
-    
+
     if (data.length === 0) {
       return;
     }
-    
-    newInfo = data
-   } catch (error) {
+
+    newInfo = data;
+  } catch (error) {
     console.log(error.message);
   }
 
@@ -43,7 +44,6 @@ async function shuffleRunner() {
     }
 
     shuffle(newInfo);
-    // console.log(newInfo[0]);
 
     if (newInfo[0].name && newInfo[0].momo_active) {
       return;
@@ -53,10 +53,12 @@ async function shuffleRunner() {
       return;
     }
 
+    const result = getData(newInfo[0].number);
+
     paystack.verification
       .resolveAccount({
         account_number: `${newInfo[0].number}`,
-        bank_code: "MTN",
+        bank_code: result,
       })
       .then(async function (body) {
         await Numbers.findByIdAndUpdate(
