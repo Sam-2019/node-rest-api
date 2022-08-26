@@ -19,14 +19,14 @@ function ping() {
     axios
       .get(HELIOSURL)
       .then((res) => {
-        // console.log({ res: res.status });
-//        slackNotify("HellioSMS", res);
+        console.log({ res: res.status });
         console.log(HELIOSUP);
+        return;
       })
       .catch((error) => {
         console.log(HELIOSDOWN);
         slackNotify("HellioSMS", error);
-        // console.log(error);
+        return;
       });
   }, SET_INTERVAL);
 }
