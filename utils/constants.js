@@ -11,11 +11,41 @@ const HELIOSURL = "https://helliomessaging.com"
 // const prefixVODAFONE = [020, 050];
 // const networkcodeAIRRTELTIGO = [027, 057, 026, 056];
 
+function sliceNumber(data) {
+ if (!data) return "No data!";
+ return data.slice(0, 3);
+}
+
 const networkCodes = [
-  {mtn: [024, 054, 055, 059, 025]},
-  {vodefone: [020, 050]},
-  {airteltigo: [027, 057, 026, 056]}
-]
+ { mtn: ["024", "054", "055", "059", "025"] },
+ { vodafone: ["020", "050"] },
+ { airteltigo: ["027", "057", "026", "056"] },
+];
+
+const bank_ids = { mtn: 28, vodafone: 66, airteltigo: 29 };
+function getData(data) {
+ if (!data) {
+  return "No data";
+ }
+
+ if (networkCodes[0].mtn.includes(sliceNumber(data))) {
+  return bank_ids.mtn;
+ }
+
+ if (networkCodes[1].vodafone.includes(sliceNumber(data))) {
+  return bank_ids.vodafone;
+ }
+
+ if (networkCodes[2].airteltigo.includes(sliceNumber(data))) {
+  return bank_ids.airteltigo;
+ }
+
+ return;
+}
+
+const info = getData(number);
+console.log({ info });
+
 
 module.exports = {
   MESSAGE,
