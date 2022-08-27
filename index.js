@@ -4,6 +4,7 @@ const express = require("express");
 const { PORT, NODE_ENV } = require("./utils/config");
 const { shuffleRunner, ping } = require("./utils/runner");
 const { bot } = require("./utils/telegraf");
+const { cleanup } = require("./utils/dbCleanup");
 
 require("./db/index");
 
@@ -14,6 +15,7 @@ app.use(express.json());
 const routes = require("./routes/routes");
 app.use("/api", routes);
 shuffleRunner();
+cleanup();
 ping();
 bot.launch();
 
