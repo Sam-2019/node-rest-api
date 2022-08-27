@@ -8,7 +8,6 @@ async function cleanup() {
     shuffle(bankIDs);
 
     const results = await getFailedWithIDS(bankIDs[0]);
-    console.log(results);
     if (!results) return;
 
     await updateMany(bankIDs[0]);
