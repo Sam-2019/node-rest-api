@@ -19,7 +19,7 @@ const networkCodes = [
   { airteltigo: ["027", "057", "026", "056"] },
 ];
 
-const bank_ids = {
+const bankIDs = {
   mtn: {
     id: 28,
     code: "MTN",
@@ -40,15 +40,15 @@ function getData(data) {
   }
 
   if (networkCodes[0].mtn.includes(sliceNumber(data))) {
-    return bank_ids.mtn.code;
+    return bankIDs.mtn.code;
   }
 
   if (networkCodes[1].vodafone.includes(sliceNumber(data))) {
-    return bank_ids.vodafone.code;
+    return bankIDs.vodafone.code;
   }
 
   if (networkCodes[2].airteltigo.includes(sliceNumber(data))) {
-    return bank_ids.airteltigo.code;
+    return bankIDs.airteltigo.code;
   }
 
   return;
