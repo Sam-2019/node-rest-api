@@ -1,6 +1,5 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
 const Numbers = require("../db/numbers");
-const { slackNotify } = require("./slack");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
 const { getDataIDS, getFailedIDS } = require("../db/repositories");
@@ -102,6 +101,7 @@ async function shuffleRunner() {
 }
 
 module.exports = {
+  shuffle,
   shuffleRunner,
   ping,
 };
