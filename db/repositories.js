@@ -1,15 +1,18 @@
 const Numbers = require("./numbers");
-const { MESSAGE, ID } = require("../utils/constants");
+const { MESSAGE } = require("../utils/constants");
 
 const getSaved = async () => {
-  return await Numbers.where("bank_id", ID).countDocuments();
+  return await Numbers.where("message", null).countDocuments();
 };
+
 const getFailed = async () => {
   return await Numbers.where("message", MESSAGE).countDocuments();
 };
+
 const getDataIDS = async () => {
   return await Numbers.find({ bank_id: null, message: null });
 };
+
 const getFailedIDS = async () => {
   return await Numbers.find({ message: MESSAGE });
 };
@@ -17,9 +20,11 @@ const getFailedIDS = async () => {
 const getRemaining = async () => {
   return await Numbers.find({ bank_id: null, message: null }).countDocuments();
 };
+
 const getAll = async () => {
   return await Numbers.find();
 };
+
 const getOne = async (phone) => {
   return await Numbers.findOne({ phone });
 };
