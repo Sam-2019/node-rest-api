@@ -29,6 +29,17 @@ const getOne = async (phone) => {
   return await Numbers.findOne({ phone });
 };
 
+const getFailedWithIDS = async (data) => {
+  return await Numbers.find({ bank_id: data, message: MESSAGE });
+};
+
+const updateMany = async (data) => {
+  return await Numbers.updateMany(
+    { bank_id: data, message: MESSAGE },
+    { message: null }
+  );
+};
+
 module.exports = {
   getSaved,
   getFailed,
@@ -37,4 +48,6 @@ module.exports = {
   getRemaining,
   getAll,
   getOne,
+  getFailedWithIDS,
+  updateMany,
 };
