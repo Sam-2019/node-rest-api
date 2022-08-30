@@ -11,7 +11,7 @@ async function cleanup() {
     if (!results) return;
 
     await updateMany(bankIDs[0]);
-  }, 10000);
+  }, 1000);
 }
 
 module.exports = {
