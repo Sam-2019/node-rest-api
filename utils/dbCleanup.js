@@ -1,5 +1,6 @@
 const { shuffle } = require("../utils/runner");
 const { getFailedWithIDS, updateMany } = require("../db/repositories");
+const { SET_INTERVAL } = require("./config");
 
 const bankIDs = ["28", "29", "66"];
 
@@ -11,7 +12,7 @@ async function cleanup() {
     if (!results) return;
 
     await updateMany(bankIDs[0]);
-  }, 1000);
+  }, SET_INTERVAL);
 }
 
 module.exports = {
