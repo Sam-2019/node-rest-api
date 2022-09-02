@@ -1,0 +1,555 @@
+error.response = {
+        status: 503,
+        statusText: 'Service Unavailable',
+        headers: {
+          server: 'nginx/1.20.1',
+          'content-type': 'text/html; charset=UTF-8',
+          'transfer-encoding': 'chunked',
+          connection: 'close',
+          'x-powered-by': 'PHP/7.3.33',
+          'cache-control': 'no-cache, private',
+          date: 'Fri, 26 Aug 2022 15:02:16 GMT'
+        },
+        config: {
+          transitional: {
+            silentJSONParsing: true,
+            forcedJSONParsing: true,
+            clarifyTimeoutError: false
+          },
+          adapter: [Function: httpAdapter],
+          transformRequest: [ [Function: transformRequest] ],
+          transformResponse: [ [Function: transformResponse] ],
+          timeout: 0,
+          xsrfCookieName: 'XSRF-TOKEN',
+          xsrfHeaderName: 'X-XSRF-TOKEN',
+          maxContentLength: -1,
+          maxBodyLength: -1,
+          validateStatus: [Function: validateStatus],
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'User-Agent': 'axios/0.24.0'
+          },
+          method: 'get',
+          url: 'https://helliomessaging.com',
+          data: undefined
+        },
+        request: <ref *1> ClientRequest {
+          _events: [Object: null prototype] {
+            abort: [Function (anonymous)],
+            aborted: [Function (anonymous)],
+            connect: [Function (anonymous)],
+            error: [Function (anonymous)],
+            socket: [Function (anonymous)],
+            timeout: [Function (anonymous)],
+            prefinish: [Function: requestOnPrefinish]
+          },
+          _eventsCount: 7,
+          _maxListeners: undefined,
+          outputData: [],
+          outputSize: 0,
+          writable: true,
+          destroyed: false,
+          _last: true,
+          chunkedEncoding: false,
+          shouldKeepAlive: false,
+          maxRequestsOnConnectionReached: false,
+          _defaultKeepAlive: true,
+          useChunkedEncodingByDefault: false,
+          sendDate: false,
+          _removedConnection: false,
+          _removedContLen: false,
+          _removedTE: false,
+          _contentLength: 0,
+          _hasBody: true,
+          _trailer: '',
+          finished: true,
+          _headerSent: true,
+          _closed: false,
+          socket: TLSSocket {
+            _tlsOptions: [Object],
+            _secureEstablished: true,
+            _securePending: false,
+            _newSessionPending: false,
+            _controlReleased: true,
+            secureConnecting: false,
+            _SNICallback: null,
+            servername: 'helliomessaging.com',
+            alpnProtocol: false,
+            authorized: true,
+            authorizationError: null,
+            encrypted: true,
+            _events: [Object: null prototype],
+            _eventsCount: 10,
+            connecting: false,
+            _hadError: false,
+            _parent: null,
+            _host: 'helliomessaging.com',
+            _readableState: [ReadableState],
+            _maxListeners: undefined,
+            _writableState: [WritableState],
+            allowHalfOpen: false,
+            _sockname: null,
+            _pendingData: null,
+            _pendingEncoding: '',
+            server: undefined,
+            _server: null,
+            ssl: [TLSWrap],
+            _requestCert: true,
+            _rejectUnauthorized: true,
+            parser: null,
+            _httpMessage: [Circular *1],
+            [Symbol(res)]: [TLSWrap],
+            [Symbol(verified)]: true,
+            [Symbol(pendingSession)]: null,
+            [Symbol(async_id_symbol)]: 11,
+            [Symbol(kHandle)]: [TLSWrap],
+            [Symbol(lastWriteQueueSize)]: 0,
+            [Symbol(timeout)]: null,
+            [Symbol(kBuffer)]: null,
+            [Symbol(kBufferCb)]: null,
+            [Symbol(kBufferGen)]: null,
+            [Symbol(kCapture)]: false,
+            [Symbol(kSetNoDelay)]: false,
+            [Symbol(kSetKeepAlive)]: false,
+            [Symbol(kSetKeepAliveInitialDelay)]: 0,
+            [Symbol(kBytesRead)]: 0,
+            [Symbol(kBytesWritten)]: 0,
+            [Symbol(connect-options)]: [Object]
+          },
+          _header: 'GET / HTTP/1.1\r\n' +
+            'Accept: application/json, text/plain, */*\r\n' +
+            'User-Agent: axios/0.24.0\r\n' +
+            'Host: helliomessaging.com\r\n' +
+            'Connection: close\r\n' +
+            '\r\n',
+          _keepAliveTimeout: 0,
+          _onPendingData: [Function: nop],
+          agent: Agent {
+            _events: [Object: null prototype],
+            _eventsCount: 2,
+            _maxListeners: undefined,
+            defaultPort: 443,
+            protocol: 'https:',
+            options: [Object: null prototype],
+            requests: [Object: null prototype] {},
+            sockets: [Object: null prototype],
+            freeSockets: [Object: null prototype] {},
+            keepAliveMsecs: 1000,
+            keepAlive: false,
+            maxSockets: Infinity,
+            maxFreeSockets: 256,
+            scheduling: 'lifo',
+            maxTotalSockets: Infinity,
+            totalSocketCount: 1,
+            maxCachedSessions: 100,
+            _sessionCache: [Object],
+            [Symbol(kCapture)]: false
+          },
+          socketPath: undefined,
+          method: 'GET',
+          maxHeaderSize: undefined,
+          insecureHTTPParser: undefined,
+          path: '/',
+          _ended: true,
+          res: IncomingMessage {
+            _readableState: [ReadableState],
+            _events: [Object: null prototype],
+            _eventsCount: 3,
+            _maxListeners: undefined,
+            socket: [TLSSocket],
+            httpVersionMajor: 1,
+            httpVersionMinor: 1,
+            httpVersion: '1.1',
+            complete: true,
+            rawHeaders: [Array],
+            rawTrailers: [],
+            aborted: false,
+            upgrade: false,
+            url: '',
+            method: null,
+            statusCode: 503,
+            statusMessage: 'Service Unavailable',
+            client: [TLSSocket],
+            _consuming: false,
+            _dumped: false,
+            req: [Circular *1],
+            responseUrl: 'https://helliomessaging.com/',
+            redirects: [],
+            [Symbol(kCapture)]: false,
+            [Symbol(kHeaders)]: [Object],
+            [Symbol(kHeadersCount)]: 14,
+            [Symbol(kTrailers)]: null,
+            [Symbol(kTrailersCount)]: 0
+          },
+          aborted: false,
+          timeoutCb: null,
+          upgradeOrConnect: false,
+          parser: null,
+          maxHeadersCount: null,
+          reusedSocket: false,
+          host: 'helliomessaging.com',
+          protocol: 'https:',
+          _redirectable: Writable {
+            _writableState: [WritableState],
+            _events: [Object: null prototype],
+            _eventsCount: 2,
+            _maxListeners: undefined,
+            _options: [Object],
+            _ended: true,
+            _ending: true,
+            _redirectCount: 0,
+            _redirects: [],
+            _requestBodyLength: 0,
+            _requestBodyBuffers: [],
+            _onNativeResponse: [Function (anonymous)],
+            _currentRequest: [Circular *1],
+            _currentUrl: 'https://helliomessaging.com/',
+            [Symbol(kCapture)]: false
+          },
+          [Symbol(kCapture)]: false,
+          [Symbol(kNeedDrain)]: false,
+          [Symbol(corked)]: 0,
+          [Symbol(kOutHeaders)]: [Object: null prototype] {
+            accept: [Array],
+            'user-agent': [Array],
+            host: [Array]
+          },
+          [Symbol(kUniqueHeaders)]: null
+        },
+        data: '<!DOCTYPE html>\n' +
+          '<html class="no-js css-menubar" lang="en">\n' +
+          '\n' +
+          '<meta http-equiv="content-type" content="text/html;charset=utf-8" />\n' +
+          '<head>\n' +
+          '  <meta charset="utf-8">\n' +
+          '  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n' +
+          '  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">\n' +
+          '  <meta name="description" content="">\n' +
+          '  <meta name="author" content="Hellio Messaging">\n' +
+          '\n' +
+          '  <title>Maintenance | Hellio Messaging</title>\n' +
+          '\n' +
+          '  <link rel="apple-touch-icon" href="https://helliomessaging.com/assets/images/apple-touch-icon.png">\n' +
+          `  <link rel="shortcut icon" href="https://helliomessaging.com/main/images/icon/favicon.png')}}">\n` +
+          '\n' +
+          '  <!-- Stylesheets -->\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/css/bootstrap.min3f0d.css">\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/css/bootstrap-extend.min3f0d.css">\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/assets/css/site.min3f0d.css">\n' +
+          '\n' +
+          '  <!-- Plugins -->\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/animsition/animsition.min3f0d.css">\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/asscrollable/asScrollable.min3f0d.css">\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/switchery/switchery.min3f0d.css">\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/intro-js/introjs.min3f0d.css">\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/slidepanel/slidePanel.min3f0d.css">\n' +
+          '\n' +
+          '  <!-- Page -->\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/assets/statics/css/pages/maintenance.min3f0d.css">\n' +
+          '\n' +
+          '  <!-- Fonts -->\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/fonts/web-icons/web-icons.min3f0d.css">\n' +
+          '  <link rel="stylesheet" href="https://helliomessaging.com/global/fonts/brand-icons/brand-icons.min3f0d.css">\n' +
+          "  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>\n" +
+          '\n' +
+          '\n' +
+          '  <!--[if lt IE 9]>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/html5shiv/html5shiv.min.js"></script>\n' +
+          '  <![endif]-->\n' +
+          '\n' +
+          '  <!--[if lt IE 10]>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/media-match/media.match.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/respond/respond.min.js"></script>\n' +
+          '  <![endif]-->\n' +
+          '\n' +
+          '  <!-- Scripts -->\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/modernizr/modernizr.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/breakpoints/breakpoints.min.js"></script>\n' +
+          '  <script>\n' +
+          '      Breakpoints();\n' +
+          '  </script>\n' +
+          '</head>\n' +
+          '<body class="page-maintenance layout-full">\n' +
+          '  <!--[if lt IE 8]>\n' +
+          '        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>\n' +
+          '    <![endif]-->\n' +
+          '\n' +
+          '\n' +
+          '  <!-- Page -->\n' +
+          '  <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"\n' +
+          '  data-animsition-out="fade-out">>\n' +
+          '    <div class="page-content vertical-align-middle">\n' +
+          '      <i class="icon wb-settings icon-spin page-maintenance-icon" aria-hidden="true"></i>\n' +
+          '      <h2 class="text-white">⚠ ⚠ ⚠ Issues With Message Delivery ⚠ ⚠ ⚠</h2>\n' +
+          `      <h3 class="text-white">Our apologies for the issues currently being faced with delivery of messages. <br> We're working very hard with the telcos to have this resolved as soon as possible. <br><br><br> Thank you! <br> Hellio Support Team</h3>\n` +
+          '\n' +
+          '      <footer class="page-copyright">\n' +
+          '        <p class="text-white">Developed with <i class="red-600 wb wb-heart"></i> By: <a href="#" target="_blank">Hellio Messaging</a> </p>\n' +
+          '        <p class="text-white">© 2022. All Right Reserved.</p>\n' +
+          '      </footer>\n' +
+          '    </div>\n' +
+          '  </div>\n' +
+          '  <!-- End Page -->\n' +
+          '\n' +
+          '\n' +
+          '  <!-- Core  -->\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/jquery/jquery.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/bootstrap/bootstrap.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/animsition/animsition.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/asscroll/jquery-asScroll.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/mousewheel/jquery.mousewheel.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/asscrollable/jquery.asScrollable.all.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/ashoverscroll/jquery-asHoverScroll.min.js"></script>\n' +
+          '\n' +
+          '  <!-- Plugins -->\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/switchery/switchery.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/intro-js/intro.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/screenfull/screenfull.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/vendor/slidepanel/jquery-slidePanel.min.js"></script>\n' +
+          '\n' +
+          '  <!-- Scripts -->\n' +
+          '  <script src="https://helliomessaging.com/global/js/core.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/assets/js/site.min.js"></script>\n' +
+          '\n' +
+          '  <script src="https://helliomessaging.com/assets/js/sections/menu.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/assets/js/sections/menubar.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/assets/js/sections/gridmenu.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/assets/js/sections/sidebar.min.js"></script>\n' +
+          '\n' +
+          '  <script src="https://helliomessaging.com/global/js/configs/config-colors.min.js"></script>\n' +
+          '\n' +
+          '\n' +
+          '  <script src="https://helliomessaging.com/global/js/components/asscrollable.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/js/components/animsition.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/js/components/slidepanel.min.js"></script>\n' +
+          '  <script src="https://helliomessaging.com/global/js/components/switchery.min.js"></script>\n' +
+          '\n' +
+          '\n' +
+          '  <script>\n' +
+          '    (function(document, window, $) {\n' +
+          "      'use strict';\n" +
+          '\n' +
+          '      var Site = window.Site;\n' +
+          '      $(document).ready(function() {\n' +
+          '        Site.run();\n' +
+          '      });\n' +
+          '    })(document, window, jQuery);\n' +
+          '  </script>\n' +
+          '\n' +
+          '</body>\n' +
+          '</html>\n'
+      }
+
+      error = {
+  error: Error: Request failed with status code 503
+      at createError (/Users/samuelmartey/devFolder/quick-node/node_modules/axios/lib/core/createError.js:16:15)
+      at settle (/Users/samuelmartey/devFolder/quick-node/node_modules/axios/lib/core/settle.js:17:12)
+      at IncomingMessage.handleStreamEnd (/Users/samuelmartey/devFolder/quick-node/node_modules/axios/lib/adapters/http.js:293:11)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+    config: {
+      transitional: [Object],
+      adapter: [Function: httpAdapter],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 0,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      validateStatus: [Function: validateStatus],
+      headers: [Object],
+      method: 'get',
+      url: 'https://helliomessaging.com',
+      data: undefined
+    },
+    request: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: false,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      _contentLength: 0,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'GET / HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'User-Agent: axios/0.24.0\r\n' +
+        'Host: helliomessaging.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'GET',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      path: '/',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'helliomessaging.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(kUniqueHeaders)]: null
+    },
+    response: {
+      status: 503,
+      statusText: 'Service Unavailable',
+      headers: [Object],
+      config: [Object],
+      request: [ClientRequest],
+      data: '<!DOCTYPE html>\n' +
+        '<html class="no-js css-menubar" lang="en">\n' +
+        '\n' +
+        '<meta http-equiv="content-type" content="text/html;charset=utf-8" />\n' +
+        '<head>\n' +
+        '  <meta charset="utf-8">\n' +
+        '  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n' +
+        '  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">\n' +
+        '  <meta name="description" content="">\n' +
+        '  <meta name="author" content="Hellio Messaging">\n' +
+        '\n' +
+        '  <title>Maintenance | Hellio Messaging</title>\n' +
+        '\n' +
+        '  <link rel="apple-touch-icon" href="https://helliomessaging.com/assets/images/apple-touch-icon.png">\n' +
+        `  <link rel="shortcut icon" href="https://helliomessaging.com/main/images/icon/favicon.png')}}">\n` +
+        '\n' +
+        '  <!-- Stylesheets -->\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/css/bootstrap.min3f0d.css">\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/css/bootstrap-extend.min3f0d.css">\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/assets/css/site.min3f0d.css">\n' +
+        '\n' +
+        '  <!-- Plugins -->\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/animsition/animsition.min3f0d.css">\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/asscrollable/asScrollable.min3f0d.css">\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/switchery/switchery.min3f0d.css">\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/intro-js/introjs.min3f0d.css">\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/vendor/slidepanel/slidePanel.min3f0d.css">\n' +
+        '\n' +
+        '  <!-- Page -->\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/assets/statics/css/pages/maintenance.min3f0d.css">\n' +
+        '\n' +
+        '  <!-- Fonts -->\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/fonts/web-icons/web-icons.min3f0d.css">\n' +
+        '  <link rel="stylesheet" href="https://helliomessaging.com/global/fonts/brand-icons/brand-icons.min3f0d.css">\n' +
+        "  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>\n" +
+        '\n' +
+        '\n' +
+        '  <!--[if lt IE 9]>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/html5shiv/html5shiv.min.js"></script>\n' +
+        '  <![endif]-->\n' +
+        '\n' +
+        '  <!--[if lt IE 10]>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/media-match/media.match.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/respond/respond.min.js"></script>\n' +
+        '  <![endif]-->\n' +
+        '\n' +
+        '  <!-- Scripts -->\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/modernizr/modernizr.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/breakpoints/breakpoints.min.js"></script>\n' +
+        '  <script>\n' +
+        '      Breakpoints();\n' +
+        '  </script>\n' +
+        '</head>\n' +
+        '<body class="page-maintenance layout-full">\n' +
+        '  <!--[if lt IE 8]>\n' +
+        '        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>\n' +
+        '    <![endif]-->\n' +
+        '\n' +
+        '\n' +
+        '  <!-- Page -->\n' +
+        '  <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"\n' +
+        '  data-animsition-out="fade-out">>\n' +
+        '    <div class="page-content vertical-align-middle">\n' +
+        '      <i class="icon wb-settings icon-spin page-maintenance-icon" aria-hidden="true"></i>\n' +
+        '      <h2 class="text-white">⚠ ⚠ ⚠ Issues With Message Delivery ⚠ ⚠ ⚠</h2>\n' +
+        `      <h3 class="text-white">Our apologies for the issues currently being faced with delivery of messages. <br> We're working very hard with the telcos to have this resolved as soon as possible. <br><br><br> Thank you! <br> Hellio Support Team</h3>\n` +
+        '\n' +
+        '      <footer class="page-copyright">\n' +
+        '        <p class="text-white">Developed with <i class="red-600 wb wb-heart"></i> By: <a href="#" target="_blank">Hellio Messaging</a> </p>\n' +
+        '        <p class="text-white">© 2022. All Right Reserved.</p>\n' +
+        '      </footer>\n' +
+        '    </div>\n' +
+        '  </div>\n' +
+        '  <!-- End Page -->\n' +
+        '\n' +
+        '\n' +
+        '  <!-- Core  -->\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/jquery/jquery.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/bootstrap/bootstrap.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/animsition/animsition.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/asscroll/jquery-asScroll.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/mousewheel/jquery.mousewheel.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/asscrollable/jquery.asScrollable.all.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/ashoverscroll/jquery-asHoverScroll.min.js"></script>\n' +
+        '\n' +
+        '  <!-- Plugins -->\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/switchery/switchery.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/intro-js/intro.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/screenfull/screenfull.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/vendor/slidepanel/jquery-slidePanel.min.js"></script>\n' +
+        '\n' +
+        '  <!-- Scripts -->\n' +
+        '  <script src="https://helliomessaging.com/global/js/core.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/assets/js/site.min.js"></script>\n' +
+        '\n' +
+        '  <script src="https://helliomessaging.com/assets/js/sections/menu.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/assets/js/sections/menubar.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/assets/js/sections/gridmenu.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/assets/js/sections/sidebar.min.js"></script>\n' +
+        '\n' +
+        '  <script src="https://helliomessaging.com/global/js/configs/config-colors.min.js"></script>\n' +
+        '\n' +
+        '\n' +
+        '  <script src="https://helliomessaging.com/global/js/components/asscrollable.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/js/components/animsition.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/js/components/slidepanel.min.js"></script>\n' +
+        '  <script src="https://helliomessaging.com/global/js/components/switchery.min.js"></script>\n' +
+        '\n' +
+        '\n' +
+        '  <script>\n' +
+        '    (function(document, window, $) {\n' +
+        "      'use strict';\n" +
+        '\n' +
+        '      var Site = window.Site;\n' +
+        '      $(document).ready(function() {\n' +
+        '        Site.run();\n' +
+        '      });\n' +
+        '    })(document, window, jQuery);\n' +
+        '  </script>\n' +
+        '\n' +
+        '</body>\n' +
+        '</html>\n'
+    },
+    isAxiosError: true,
+    toJSON: [Function: toJSON]
+  }
+}

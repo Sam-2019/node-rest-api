@@ -1,7 +1,10 @@
 require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
-const { shuffleRunner } = require("./utils/runner");
+const { PORT, NODE_ENV } = require("./utils/config");
+const { shuffleRunner, ping } = require("./utils/runner");
+const { bot } = require("./utils/telegraf");
+const { cleanup } = require("./utils/dbCleanup");
 
 require("./db/index");
 
@@ -12,7 +15,16 @@ app.use(express.json());
 const routes = require("./routes/routes");
 app.use("/api", routes);
 shuffleRunner();
+cleanup();
+ping();
+bot.launch();
 
-app.listen(3000, () => {
-  console.log(`Server Started at ${3000}`);
+const port = PORT || 4000;
+
+app.listen(port, () => {
+  console.log(
+    NODE_ENV === "production"
+      ? `server live`
+      : `server live on http://localhost:${port}`
+  );
 });
