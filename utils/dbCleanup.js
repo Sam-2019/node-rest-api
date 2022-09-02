@@ -1,4 +1,4 @@
-const { shuffle } = require("../utils/runner");
+const { shuffle } = require("./shuffle");
 const { getFailedWithIDS, updateMany } = require("../db/repositories");
 
 const bankIDs = ["28", "29", "66"];
