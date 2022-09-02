@@ -4,23 +4,7 @@ const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
 const { getDataIDS, getFailedIDS } = require("../db/repositories");
 const { getData } = require("./constants");
-
-function shuffle(array) {
-  var currentIndex = array.length,
-    randomIndex;
-
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
-}
+const { shuffle } = require("./shuffle");
 
 async function shuffleRunner() {
   let newInfo;
