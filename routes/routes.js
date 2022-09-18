@@ -38,7 +38,10 @@ router.get("/id/:id", async (req, res) => {
   const accountCode = getData(updated);
 
   const paystack = await stack(updated, accountCode, res);
-  const truecaller = await caller(pn, res);
+  const info = await caller(pn, res);
+
+  const transafomer = JSON.parse(info);
+  const truecaller = transafomer.data;
 
   if (truecaller && !paystack) {
     return res.json([{ truecaller: truecaller }, { paystack: null }]);
