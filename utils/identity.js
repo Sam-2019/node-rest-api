@@ -17,14 +17,25 @@ async function stack(phone, accountCode, res) {
 
 async function caller(pn, res) {
   try {
-    var truecallerData = truecallerjs.searchNumber({
+    var truecallerData = await truecallerjs.searchNumber({
       number: pn.getNumber(),
       countryCode: pn.getRegionCode(),
       installationId: TRUECALLER,
       output: "JSON",
     });
 
-    return truecallerData;
+    const info = JSON.parse(truecallerData);
+    const transformer = {
+      id: info.data[0].id,
+      name: info.data[0].name,
+      image: info.data[0].image,
+      gender: info.data[0].gender,
+      internetAddresses: {
+        email: info.data[0].internetAddresses[0].id,
+        caption: info.data[0].internetAddresses[0].caption,
+      },
+    };
+    return transformer;
   } catch (error) {
     // res.status(500).json({ message: error.message });
   }
