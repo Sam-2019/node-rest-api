@@ -41,7 +41,7 @@ router.get("/id/:id", async (req, res) => {
   
   const info = await caller(pn, res);
   const transformer = JSON.parse(info);
-  const truecaller = transafomer.data;
+  const truecaller = transformer.data;
 
   if (truecaller && !paystack) {
     return res.json([{ truecaller: truecaller }, { paystack: null }]);
