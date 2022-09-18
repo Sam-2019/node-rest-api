@@ -38,27 +38,38 @@ router.get("/id/:id", async (req, res) => {
   const accountCode = getData(updated);
 
   const paystack = await stack(updated, accountCode, res);
-  
+
   const info = await caller(pn, res);
   const transformer = JSON.parse(info);
   const truecaller = transformer.data;
 
-  if (truecaller && !paystack) {
-    return res.json([{ truecaller: truecaller }, { paystack: null }]);
-    // return [{ truecaller: truecaller }, { paystack: null }];
-  }
+  // if (truecaller && !paystack) {
+  //   return res.json([{ truecaller: truecaller }, { paystack: null }]);
+  //   // return [{ truecaller: truecaller }, { paystack: null }];
+  // }
 
-  if (paystack && !truecaller) {
-    return res.json([{ paystack: paystack }, { truecaller: null }]);
-    // return [{ paystack: paystack }, { truecaller: null }];
-  }
+  // if (paystack && !truecaller) {
+  //   return res.json([{ paystack: paystack }, { truecaller: null }]);
+  //   // return [{ paystack: paystack }, { truecaller: null }];
+  // }
 
-  if (!paystack && !truecaller) {
-    return res.json([{ truecaller: truecaller }, { paystack: null }]);
-    // return [{ truecaller: truecaller }, { paystack: nul }];
-  }
+  // if (!paystack && !truecaller) {
+  //   return res.json([{ truecaller: truecaller }, { paystack: null }]);
+  //   // return [{ truecaller: truecaller }, { paystack: nul }];
+  // }
 
-  return res.json([{ paystack: paystack }, { truecaller: truecaller }]);
-  // return [{ paystack: paystack }, { truecaller: truecaller }];
+  // return res.json([{ paystack: paystack }, { truecaller: truecaller }]);
+  // // return [{ paystack: paystack }, { truecaller: truecaller }];
+
+  const output = {
+    name: paystack ? paystack.account_name : null,
+    other_name: truecaller.data === null ? null : truecaller.name,
+    gender: truecaller.data === null ? null : truecaller.gender,
+    image: truecaller.data === null ? null : truecaller.image,
+    email: truecaller.data === null ? null : truecaller.email,
+    caption: truecaller.data === null ? null : truecaller.caption,
+  };
+
+  return res.json(output);
 });
 module.exports = router;
