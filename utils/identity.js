@@ -9,7 +9,7 @@ async function stack(phone, accountCode, res) {
       bank_code: accountCode,
     });
 
-    return paystackData;
+    return paystackData.data;
   } catch (error) {
     // res.status(500).json({ message: error.message });
   }
