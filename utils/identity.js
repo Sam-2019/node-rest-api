@@ -24,18 +24,20 @@ async function caller(pn, res) {
       output: "JSON",
     });
 
-    const info = JSON.parse(truecallerData);
-    const transformer = {
-      id: info.data[0].id,
-      name: info.data[0].name,
-      image: info.data[0].image,
-      gender: info.data[0].gender,
-      internetAddresses: {
-        email: info.data[0].internetAddresses[0].id,
-        caption: info.data[0].internetAddresses[0].caption,
-      },
-    };
-    return transformer;
+    // const info = JSON.parse(truecallerData);
+    // console.log({ truecallerData });
+    // const transformer = {
+    //   id: info.data[0].id,
+    //   name: info.data[0].name,
+    //   image: info.data[0].image,
+    //   gender: info.data[0].gender,
+    //   internetAddresses: {
+    //     email: info.data[0].internetAddresses[0].id,
+    //     caption: info.data[0].internetAddresses[0].caption,
+    //   },
+    // };
+
+    return truecallerData;
   } catch (error) {
     // res.status(500).json({ message: error.message });
   }
