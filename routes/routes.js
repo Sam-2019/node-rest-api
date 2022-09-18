@@ -28,7 +28,8 @@ router.get("/get_name/:id", async (req, res) => {
 });
 
 router.get("/id/:id", async (req, res) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
+  res.json(`${req.params.id}`);
   // let countryCode = "GH";
   // const number = req.params.id;
   // const pn = parsePhoneNumber(number, countryCode);
