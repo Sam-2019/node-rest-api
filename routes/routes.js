@@ -41,21 +41,21 @@ router.get("/id/:id", async (req, res) => {
   const truecaller = await caller(pn, res);
 
   if (truecaller && !paystack) {
-    // return res.json([{ truecaller: truecaller }, { paystack: null }]);
-    return [{ truecaller: truecaller }, { paystack: null }];
+    return res.json([{ truecaller: truecaller }, { paystack: null }]);
+    // return [{ truecaller: truecaller }, { paystack: null }];
   }
 
   if (paystack && !truecaller) {
-    // return res.json([{ paystack: paystack }, { truecaller: null }]);
-    return [{ paystack: paystack }, { truecaller: null }];
+    return res.json([{ paystack: paystack }, { truecaller: null }]);
+    // return [{ paystack: paystack }, { truecaller: null }];
   }
 
   if (!paystack && !truecaller) {
-    // return res.json([{ truecaller: truecaller }, { paystack: null }]);
-    return [{ truecaller: truecaller }, { paystack: nul }];
+    return res.json([{ truecaller: truecaller }, { paystack: null }]);
+    // return [{ truecaller: truecaller }, { paystack: nul }];
   }
 
-  // return res.json([{ paystack: paystack }, { truecaller: truecaller }]);
-  return [{ paystack: paystack }, { truecaller: truecaller }];
+  return res.json([{ paystack: paystack }, { truecaller: truecaller }]);
+  // return [{ paystack: paystack }, { truecaller: truecaller }];
 });
 module.exports = router;
