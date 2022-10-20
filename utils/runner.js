@@ -56,7 +56,7 @@ async function shuffleRunner() {
               name: body.data.account_name,
               account_number: body.data.account_number,
               bank_id: body.data.bank_id,
-              momo_active: body.data.momo_active,
+//               momo_active: body.data.momo_active,
             },
           },
           {
