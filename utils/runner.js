@@ -48,6 +48,7 @@ async function shuffleRunner() {
       })
       .then(async function (body) {
       console.log({name: body.data.account_name})
+        console.log({newInfo:  newInfo[0].id})
 //         await Attendees.findByIdAndUpdate(
 //           newInfo[0].id,
 //           {
