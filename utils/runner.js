@@ -39,7 +39,7 @@ async function shuffleRunner() {
     // }
 
     const result = getData(newInfo[0].number);
-    console.log({result})
+//     console.log({result})
 
     paystack.verification
       .resolveAccount({
@@ -47,20 +47,21 @@ async function shuffleRunner() {
         bank_code: result,
       })
       .then(async function (body) {
-        await Attendees.findByIdAndUpdate(
-          newInfo[0].id,
-          {
-            $set: {
-              name: body.data.account_name,
-              account_number: body.data.account_number,
-              bank_id: body.data.bank_id,
-              momo_active: body.data.momo_active,
-            },
-          },
-          {
-            new: false,
-          }
-        );
+      console.log({name: body.data.account_name})
+//         await Attendees.findByIdAndUpdate(
+//           newInfo[0].id,
+//           {
+//             $set: {
+//               name: body.data.account_name,
+//               account_number: body.data.account_number,
+//               bank_id: body.data.bank_id,
+//               momo_active: body.data.momo_active,
+//             },
+//           },
+//           {
+//             new: false,
+//           }
+//         );
       })
       .catch(async function (error) {
         if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
