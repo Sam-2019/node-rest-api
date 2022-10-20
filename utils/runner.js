@@ -3,7 +3,7 @@ const Numbers = require("../db/numbers");
 const Attendees = require("../db/attendees");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, getFailedIDS } = require("../db/repositories");
+const { getDataIDS, getFailedIDS } = require("../db/attendee_repositories");
 const { getData } = require("./constants");
 const { shuffle } = require("./shuffle");
 
