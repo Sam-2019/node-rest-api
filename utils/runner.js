@@ -12,6 +12,7 @@ async function shuffleRunner() {
 
   try {
     const data = await getDataIDS();
+    console.log({data})
 
     if (data.length === 0) {
       return;
@@ -40,49 +41,49 @@ async function shuffleRunner() {
     const result = getData(newInfo[0].number);
     console.log({result})
 
-    paystack.verification
-      .resolveAccount({
-        account_number: `${newInfo[0].number}`,
-        bank_code: result,
-      })
-      .then(async function (body) {
-        await Attendees.findByIdAndUpdate(
-          newInfo[0].id,
-          {
-            $set: {
-              name: body.data.account_name,
-              account_number: body.data.account_number,
-              bank_id: body.data.bank_id,
-              momo_active: body.data.momo_active,
-            },
-          },
-          {
-            new: false,
-          }
-        );
-      })
+//     paystack.verification
+//       .resolveAccount({
+//         account_number: `${newInfo[0].number}`,
+//         bank_code: result,
+//       })
+//       .then(async function (body) {
+//         await Attendees.findByIdAndUpdate(
+//           newInfo[0].id,
+//           {
+//             $set: {
+//               name: body.data.account_name,
+//               account_number: body.data.account_number,
+//               bank_id: body.data.bank_id,
+//               momo_active: body.data.momo_active,
+//             },
+//           },
+//           {
+//             new: false,
+//           }
+//         );
+//       })
       .catch(async function (error) {
-        if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
-          return;
-        }
+//         if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
+//           return;
+//         }
 
-        if (error.error.message === "Endpoint request timed out") {
-          return;
-        }
+//         if (error.error.message === "Endpoint request timed out") {
+//           return;
+//         }
 
-        await Attendees.findByIdAndUpdate(
-          newInfo[0].id,
-          {
-            $set: {
-              message: error.error.message,
-            },
-          },
-          {
-            new: false,
-          }
-        );
-        console.log("No data");
-      });
+//         await Attendees.findByIdAndUpdate(
+//           newInfo[0].id,
+//           {
+//             $set: {
+//               message: error.error.message,
+//             },
+//           },
+//           {
+//             new: false,
+//           }
+//         );
+//         console.log("No data");
+//       });
   }, SET_INTERVAL);
 }
 
