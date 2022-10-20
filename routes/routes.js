@@ -1,13 +1,13 @@
 const express = require("express");
-const { getOne, getAll } = require("../db/repositories");
+const { getOne, getAll } = require("../db/attendee_repositories");
 const router = express.Router();
 
 //Get all Method
 router.get("/get_names", async (req, res) => {
   try {
-    // const data = await getAll();
-    // res.json(data);
-    res.json("Konnichiwa");
+    const data = await getAll();
+    res.json(data);
+//     res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
