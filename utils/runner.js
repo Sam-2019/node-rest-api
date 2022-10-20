@@ -1,5 +1,6 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
 const Numbers = require("../db/numbers");
+const Attendees = require("../db/attendees");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
 const { getDataIDS, getFailedIDS } = require("../db/repositories");
@@ -10,7 +11,7 @@ async function shuffleRunner() {
   let newInfo;
 
   try {
-    const data = await getFailedIDS();
+    const data = await getDataIDS();
 
     if (data.length === 0) {
       return;
@@ -37,6 +38,7 @@ async function shuffleRunner() {
     // }
 
     const result = getData(newInfo[0].number);
+    console.log({result})
 
     paystack.verification
       .resolveAccount({
@@ -44,7 +46,7 @@ async function shuffleRunner() {
         bank_code: result,
       })
       .then(async function (body) {
-        await Numbers.findByIdAndUpdate(
+        await Attendees.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
@@ -68,7 +70,7 @@ async function shuffleRunner() {
           return;
         }
 
-        await Numbers.findByIdAndUpdate(
+        await Attendees.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
