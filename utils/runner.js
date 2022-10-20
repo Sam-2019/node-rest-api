@@ -3,7 +3,7 @@ const Numbers = require("../db/numbers");
 const Attendees = require("../db/attendees");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, getFailedIDS } = require("../db/repositories");
+const { getDataIDS, getFailedIDS, getAll } = require("../db/repositories");
 const { getData } = require("./constants");
 const { shuffle } = require("./shuffle");
 
@@ -11,7 +11,7 @@ async function shuffleRunner() {
   let newInfo;
 
   try {
-    const data = await getFailedIDS();
+    const data = await getDataIDS();
 
     if (data.length === 0) {
       return;
@@ -38,6 +38,7 @@ async function shuffleRunner() {
     // }
 
     const result = getData(newInfo[0].number);
+    console.log({result})
 
     paystack.verification
       .resolveAccount({
