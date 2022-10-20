@@ -1,7 +1,7 @@
 const { Telegraf } = require("telegraf");
 const { TOKEN } = require("./config");
 const { pingHellio } = require("./ping");
-const { getSaved, getFailed, getRemaining } = require("../db/repositories");
+const { getSaved, getFailed, getRemaining } = require("../db/attendee_repositories");
 const bot = new Telegraf(TOKEN);
 
 bot.command("ping", async (ctx) => {
