@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const dataSchema = new mongoose.Schema({
-  id_number: {
+  mobile_number: {
     type: Number,
   },
   number: {
