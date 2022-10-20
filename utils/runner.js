@@ -49,20 +49,20 @@ async function shuffleRunner() {
       .then(async function (body) {
       console.log({name: body.data.account_name})
         console.log({newInfo:  newInfo[0].id})
-//         await Attendees.findByIdAndUpdate(
-//           newInfo[0].id,
-//           {
-//             $set: {
-//               name: body.data.account_name,
-//               account_number: body.data.account_number,
-//               bank_id: body.data.bank_id,
-//               momo_active: body.data.momo_active,
-//             },
-//           },
-//           {
-//             new: false,
-//           }
-//         );
+        await Attendees.findByIdAndUpdate(
+          newInfo[0].id,
+          {
+            $set: {
+              name: body.data.account_name,
+              account_number: body.data.account_number,
+              bank_id: body.data.bank_id,
+              momo_active: body.data.momo_active,
+            },
+          },
+          {
+            new: false,
+          }
+        );
       })
       .catch(async function (error) {
         if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
