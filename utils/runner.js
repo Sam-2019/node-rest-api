@@ -62,7 +62,7 @@ async function shuffleRunner() {
 //           }
 //         );
 //       })
-      .catch(async function (error) {
+//       .catch(async function (error) {
 //         if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
 //           return;
 //         }
