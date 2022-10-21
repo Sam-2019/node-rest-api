@@ -26,7 +26,7 @@ const getAll = async () => {
 };
 
 const getOne = async (phone) => {
-  return await Attendees.findOne({ phone });
+  return await Attendees.findOne({ number: phone });
 };
 
 const getFailedWithIDS = async (data) => {
