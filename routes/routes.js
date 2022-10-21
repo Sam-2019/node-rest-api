@@ -21,7 +21,7 @@ router.get("/get_name/:id", async (req, res) => {
   console.log({req: req.params.id})
   try {
     const data = await getOne(req.params.id);
-    console.log({data.name})
+    console.log({data: data.name})
 //    if (!data.name) return;
 //     res.json(data);
     res.json("Konnichiwa");
