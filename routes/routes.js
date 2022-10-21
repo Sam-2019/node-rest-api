@@ -20,15 +20,13 @@ router.get("/get_names", async (req, res) => {
 router.get("/get_name/:id", async (req, res) => {
   console.log({req: req.params.id})
   try {
-    const data = await getOne(req.params.id);
-    console.log({data: data.name})
-   if (!data.name) {
-     res.json({ message: "No data" });
-   } else {
-      res.json(data);
-   }
-//     res.json(data);
-//     res.json("Konnichiwa");
+//     const data = await getOne(req.params.id);
+//    if (!data.name) {
+//      res.json({ message: "No data" });
+//    } else {
+//       res.json(data);
+//    }
+    res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
