@@ -23,7 +23,7 @@ router.get("/get_name/:id", async (req, res) => {
     const data = await getOne(req.params.id);
     console.log({data: data.name})
    if (!data.name) {
-     return;
+     res.json({ message: "No data" });
    } else {
       res.json(data);
    }
