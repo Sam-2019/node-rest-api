@@ -18,11 +18,13 @@ router.get("/get_names", async (req, res) => {
 
 // Get by ID Method
 router.get("/get_name/:id", async (req, res) => {
+  console.log({req: req.params.id})
   try {
     const data = await getOne(req.params.id);
-    if (!data.name) return;
-    res.json(data);
-//     res.json("Konnichiwa");
+    console.log({data})
+//    if (!data.name) return;
+//     res.json(data);
+    res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
