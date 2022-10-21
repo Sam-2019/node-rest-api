@@ -19,8 +19,9 @@ router.get("/get_names", async (req, res) => {
 // Get by ID Method
 router.get("/get_name/:id", async (req, res) => {
   try {
-    // const data = await getOne(req.params.id);
-    // res.json(data);
+//     const data = await getOne(req.params.id);
+//     if (!data.name) return;
+//     res.json(data);
     res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
