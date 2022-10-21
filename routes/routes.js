@@ -22,9 +22,13 @@ router.get("/get_name/:id", async (req, res) => {
   try {
     const data = await getOne(req.params.id);
     console.log({data: data.name})
-//    if (!data.name) return;
+   if (!data.name) {
+     return;
+   } else {
+      res.json(data);
+   }
 //     res.json(data);
-    res.json("Konnichiwa");
+//     res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
