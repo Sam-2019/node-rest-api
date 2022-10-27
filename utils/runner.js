@@ -1,9 +1,6 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
-const Numbers = require("../db/numbers");
-const Attendees = require("../db/attendees");
-const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, getFailedIDS } = require("../db/attendee_repositories");
+const { getDataIDS, getFailedIDS } = require("../db/repository");
 const { getData } = require("./constants");
 const { shuffle } = require("./shuffle");
 
@@ -12,7 +9,7 @@ async function shuffleRunner() {
 
   try {
     const data = await getDataIDS();
-//     console.log({data})
+    // console.log({data})
 
     if (data.length === 0) {
       return;
@@ -30,16 +27,16 @@ async function shuffleRunner() {
 
     shuffle(newInfo);
 
-    // if (newInfo[0].name && newInfo[0].momo_active) {
-    //   return;
-    // }
+    if (newInfo[0].name && newInfo[0].momo_active) {
+      return;
+    }
 
-    // if (newInfo[0].message) {
-    //   return;
-    // }
+    if (newInfo[0].message) {
+      return;
+    }
 
     const result = getData(newInfo[0].number);
-    console.log({result})
+    // console.log({ result });
 
     paystack.verification
       .resolveAccount({
@@ -54,7 +51,7 @@ async function shuffleRunner() {
               name: body.data.account_name,
               account_number: body.data.account_number,
               bank_id: body.data.bank_id,
-//               momo_active: body.data.momo_active,
+              // momo_active: body.data.momo_active,
             },
           },
           {
@@ -90,5 +87,4 @@ async function shuffleRunner() {
 module.exports = {
   shuffle,
   shuffleRunner,
-  ping,
 };
