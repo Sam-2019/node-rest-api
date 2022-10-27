@@ -39,7 +39,7 @@ async function shuffleRunner() {
     // }
 
     const result = getData(newInfo[0].number);
-//     console.log({result})
+    console.log({result})
 
     paystack.verification
       .resolveAccount({
@@ -47,8 +47,6 @@ async function shuffleRunner() {
         bank_code: result,
       })
       .then(async function (body) {
-//       console.log({name: body.data.account_name})
-//         console.log({newInfo:  newInfo[0].id})
         await Attendees.findByIdAndUpdate(
           newInfo[0].id,
           {
