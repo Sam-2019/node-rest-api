@@ -1,6 +1,6 @@
 const express = require("express");
 const { parsePhoneNumber } = require("awesome-phonenumber");
-const { getOne, getAll } = require("../db/attendee_repositories");
+const { getOne, getAll } = require("../db/repository");
 const { getData } = require("../utils/constants");
 const { stack, caller } = require("../utils/identity");
 const router = express.Router();

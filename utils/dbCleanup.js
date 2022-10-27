@@ -1,5 +1,5 @@
 const { shuffle } = require("./shuffle");
-const { getFailedWithIDS, updateMany } = require("../db/repositories");
+const { getFailedWithIDS, updateMany } = require("../db/repository");
 const { SET_INTERVAL } = require("./config");
 
 const bankIDs = ["28", "29", "66"];
