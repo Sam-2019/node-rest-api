@@ -7,6 +7,8 @@ const HELIOSMS2 =
 const HELIOSDOWN = "HellioSMS: server is down";
 const HELIOSUP = "HellioSMS: server is up";
 const HELIOSURL = "https://helliomessaging.com";
+const TIMEOUT = "Endpoint request timed out"
+const ENOTFOUND = "getaddrinfo ENOTFOUND api.paystack.co"
 
 const networkCodes = [
   { mtn: ["024", "054", "055", "059", "025"] },
@@ -56,5 +58,7 @@ module.exports = {
   HELIOSDOWN,
   HELIOSUP,
   HELIOSURL,
+  TIMEOUT,
+  ENOTFOUND,
   getData,
 };
