@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const dataSchema = new mongoose.Schema({
   mobile_number: {
-    type: Number,
+    type: String,
   },
   number: {
     type: String,

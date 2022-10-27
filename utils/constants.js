@@ -8,11 +8,6 @@ const HELIOSDOWN = "HellioSMS: server is down";
 const HELIOSUP = "HellioSMS: server is up";
 const HELIOSURL = "https://helliomessaging.com";
 
-function sliceNumber(data) {
-  if (!data) return "No data!";
-  return data.slice(0, 3);
-}
-
 const networkCodes = [
   { mtn: ["024", "054", "055", "059", "025"] },
   { vodafone: ["020", "050"] },
@@ -34,25 +29,21 @@ const bankIDs = {
   },
 };
 
-function getData(data) {
-  if (!data) {
-    return "No data";
-  }
+const getData = (data) => {
+  const slicedPhone = data.slice(0, 3);
 
-  if (networkCodes[0].mtn.includes(sliceNumber(data))) {
+  // console.log(slicedPhone);
+
+  if (networkCodes[0].mtn.includes(slicedPhone)) {
     return bankIDs.mtn.code;
   }
 
-  if (networkCodes[1].vodafone.includes(sliceNumber(data))) {
+  if (networkCodes[1].vodafone.includes(slicedPhone)) {
     return bankIDs.vodafone.code;
   }
 
-  if (networkCodes[2].airteltigo.includes(sliceNumber(data))) {
-    return bankIDs.airteltigo.code;
-  }
-
-  return;
-}
+  return bankIDs.airteltigo.code;
+};
 
 // const info = getData(number);
 // console.log({ info });

@@ -3,7 +3,7 @@ const Numbers = require("../db/numbers");
 const Attendees = require("../db/attendees");
 const { ping } = require("./ping");
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, getFailedIDS, getAll } = require("../db/repositories");
+const { getDataIDS, getFailedIDS } = require("../db/attendee_repositories");
 const { getData } = require("./constants");
 const { shuffle } = require("./shuffle");
 
@@ -12,6 +12,7 @@ async function shuffleRunner() {
 
   try {
     const data = await getDataIDS();
+//     console.log({data})
 
     if (data.length === 0) {
       return;
@@ -53,7 +54,7 @@ async function shuffleRunner() {
               name: body.data.account_name,
               account_number: body.data.account_number,
               bank_id: body.data.bank_id,
-              momo_active: body.data.momo_active,
+//               momo_active: body.data.momo_active,
             },
           },
           {

@@ -5,6 +5,7 @@ const NIMBLE = process.env.NIMBLE;
 const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK;
 const SET_INTERVAL = process.env.SET_INTERVAL;
 const TOKEN = process.env.TELEGRAM_TOKEN;
+const TRUECALLER = process.env.TRUECALLER
 
 module.exports = {
   DB_URI,
@@ -14,4 +15,5 @@ module.exports = {
   SLACK_WEBHOOK,
   SET_INTERVAL,
   TOKEN,
+  TRUECALLER
 };
