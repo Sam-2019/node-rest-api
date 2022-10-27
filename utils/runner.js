@@ -1,7 +1,7 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, getFailedIDS } = require("../db/repository");
-const { getData } = require("./constants");
+const { getDataIDS, getFailedIDS, Model } = require("../db/repository");
+const { getData, TIMEOUT, ENOTFOUND } = require("./constants");
 const { shuffle } = require("./shuffle");
 
 async function shuffleRunner() {
@@ -44,7 +44,7 @@ async function shuffleRunner() {
         bank_code: result,
       })
       .then(async function (body) {
-        await Attendees.findByIdAndUpdate(
+        await Model.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
@@ -60,15 +60,15 @@ async function shuffleRunner() {
         );
       })
       .catch(async function (error) {
-        if (error.error.message === "getaddrinfo ENOTFOUND api.paystack.co") {
-          return;
-        }
+        // if (error.error.message === ENOTFOUND) {
+        //   return;
+        // }
 
-        if (error.error.message === "Endpoint request timed out") {
-          return;
-        }
+        // if (error.error.message === TIMEOUT) {
+        //   return;
+        // }
 
-        await Attendees.findByIdAndUpdate(
+        await Model.findByIdAndUpdate(
           newInfo[0].id,
           {
             $set: {
