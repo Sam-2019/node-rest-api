@@ -54,4 +54,5 @@ module.exports = {
   getOne,
   getFailedWithIDS,
   updateMany,
+  Model
 };
