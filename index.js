@@ -2,9 +2,10 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const { PORT, NODE_ENV } = require("./utils/config");
-const { shuffleRunner, ping } = require("./utils/runner");
+const { shuffleRunner } = require("./utils/runner");
 const { bot } = require("./utils/telegraf");
 const { cleanup } = require("./utils/dbCleanup");
+const { ping } = require("./utils/ping");
 
 require("./db/index");
 
