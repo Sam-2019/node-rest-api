@@ -1,9 +1,13 @@
-const { MESSAGE } = require("../../utils/constants");
+const { MESSAGE, bankIDs } = require("../../utils/constants");
 const { model } = require("../model");
-const Model = model("attendee");
+const Model = model("number");
 
 const getSaved = async () => {
-  return await Model.where("message", null).countDocuments();
+  return await Model.find({
+    bank_id: {
+      $in: [bankIDs.mtn.code, bankIDs.airteltigo.code, bankIDs.vodafone.code],
+    },
+  }).countDocuments();
 };
 
 const getFailed = async () => {
@@ -48,11 +52,10 @@ module.exports = {
   getSaved,
   getFailed,
   getDataIDS,
-  getFailedIDS,
   getRemaining,
   getAll,
   getOne,
   getFailedWithIDS,
   updateMany,
-  Model
+  Model,
 };
