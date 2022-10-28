@@ -57,16 +57,18 @@ router.get("/id/:id", async (req, res) => {
   const truecaller = transformer.data;
 
   const output = {
-    name: paystack ? paystack.account_name : null,
-    other_name: truecaller[0] === null ? null : truecaller[0].name,
-    email: truecaller[0].internetAddresses === null ? null : truecaller[0].internetAddresses[0].id,
-    image: truecaller[0] === null ? null : truecaller[0].image,
-    gender: truecaller[0] === null ? null : truecaller[0].gender,
-    score: truecaller[0] === null ? null : truecaller[0].score,
-    e164Format: truecaller[0].phones === null ? null : truecaller[0].phones[0].e164Format,
-    numberType: truecaller[0].phones === null ? null : truecaller[0].phones[0].numberType,
-    countryCode: truecaller[0].phones === null ? null : truecaller[0].phones[0].countryCode,
-    carrier: truecaller[0].phones === null ? null : truecaller[0].phones[0].carrier,
+    name: paystack.account_name ? paystack.account_name : null,
+    account_number: paystack.account_number ? paystack.account_number : null,
+    bank_id: paystack.bank_id ? paystack.bank_id : null,
+    other_name: truecaller[0].name === null ? null : truecaller[0].name,
+    email: truecaller[0].internetAddresses.length === 0 ? null : truecaller[0].internetAddresses[0].id,
+    image:  truecaller[0].image === null ? null : truecaller[0].image,
+    gender: truecaller[0].gender === null ? null : truecaller[0].gender,
+    score: truecaller[0].score === null ? null : truecaller[0].score,
+    e164Format: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].e164Format,
+    numberType: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].numberType,
+    countryCode: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].countryCode,
+    carrier: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].carrier,
   };
 
   return res.json(output);
