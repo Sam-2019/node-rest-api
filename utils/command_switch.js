@@ -2,8 +2,7 @@ const { getSaved, getFailed, getRemaining } = require("../db/repository");
 const { pingHellio } = require("./ping");
 
 const getInfo = async (command) => {
-  let model;
-  let text;
+  let model; let text;
 
   switch (command) {
     case "saved":
@@ -22,15 +21,13 @@ const getInfo = async (command) => {
       model = await pingHellio();
       text = "";
       break;
-
     default:
       model = null;
       text = "app pinged";
   }
 
   return {
-    model,
-    text,
+    model, text,
   };
 };
 
