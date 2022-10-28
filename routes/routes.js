@@ -43,8 +43,6 @@ router.get("/get_name/:id", async (req, res) => {
 // });
 
 router.get("/id/:id", async (req, res) => {
-  // console.log(req.params.id);
-  // res.json(`${req.params.id}`);
   let countryCode = "GH";
   const number = req.params.id;
   const pn = parsePhoneNumber(number, countryCode);
@@ -58,31 +56,17 @@ router.get("/id/:id", async (req, res) => {
   const transformer = JSON.parse(info);
   const truecaller = transformer.data;
 
-  // if (truecaller && !paystack) {
-  //   return res.json([{ truecaller: truecaller }, { paystack: null }]);
-  //   // return [{ truecaller: truecaller }, { paystack: null }];
-  // }
-
-  // if (paystack && !truecaller) {
-  //   return res.json([{ paystack: paystack }, { truecaller: null }]);
-  //   // return [{ paystack: paystack }, { truecaller: null }];
-  // }
-
-  // if (!paystack && !truecaller) {
-  //   return res.json([{ truecaller: truecaller }, { paystack: null }]);
-  //   // return [{ truecaller: truecaller }, { paystack: nul }];
-  // }
-
-  // return res.json([{ paystack: paystack }, { truecaller: truecaller }]);
-  // // return [{ paystack: paystack }, { truecaller: truecaller }];
-
   const output = {
     name: paystack ? paystack.account_name : null,
-    other_name: truecaller.data === null ? null : truecaller.name,
-    gender: truecaller.data === null ? null : truecaller.gender,
-    image: truecaller.data === null ? null : truecaller.image,
-    email: truecaller.data === null ? null : truecaller.email,
-    caption: truecaller.data === null ? null : truecaller.caption,
+    other_name: truecaller[0] === null ? null : truecaller[0].name,
+    email: truecaller[0].internetAddresses === null ? null : truecaller[0].internetAddresses[0].id,
+    image: truecaller[0] === null ? null : truecaller[0].image,
+    gender: truecaller[0] === null ? null : truecaller[0].gender,
+    score: truecaller[0] === null ? null : truecaller[0].score,
+    e164Format: truecaller[0].phones === null ? null : truecaller[0].phones[0].e164Format,
+    numberType: truecaller[0].phones === null ? null : truecaller[0].phones[0].numberType,
+    countryCode: truecaller[0].phones === null ? null : truecaller[0].phones[0].countryCode,
+    carrier: truecaller[0].phones === null ? null : truecaller[0].phones[0].carrier,
   };
 
   return res.json(output);
