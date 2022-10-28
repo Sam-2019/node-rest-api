@@ -1,11 +1,15 @@
 const { MESSAGE, bankIDs } = require("../../utils/constants");
 const { model } = require("../model");
-const Model = model("number");
+const Model = model("attendee");
 
 const getSaved = async () => {
   return await Model.find({
     bank_id: {
-      $in: [bankIDs.mtn.code, bankIDs.airteltigo.code, bankIDs.vodafone.code],
+      $in: [
+        `${bankIDs.mtn.id}`,
+        `${bankIDs.airteltigo.id}`,
+        `${bankIDs.vodafone.id}`,
+      ],
     },
   }).countDocuments();
 };
