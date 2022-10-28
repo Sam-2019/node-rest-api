@@ -22,8 +22,7 @@ const getInfo = async (command) => {
       text = "";
       break;
     default:
-      model = null;
-      text = "app pinged";
+      model = null; text = "app pinged";
   }
 
   return {
