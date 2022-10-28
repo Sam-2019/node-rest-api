@@ -8,8 +8,8 @@ const router = express.Router();
 //Get all Method
 router.get("/get_names", async (req, res) => {
   try {
-//     const data = await getAll();
-//     res.json(data);
+    //     const data = await getAll();
+    //     res.json(data);
     res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -18,14 +18,14 @@ router.get("/get_names", async (req, res) => {
 
 // Get by ID Method
 router.get("/get_name/:id", async (req, res) => {
-  console.log({req: req.params.id})
+  console.log({ req: req.params.id });
   try {
-//     const data = await getOne(req.params.id);
-//    if (!data.name) {
-//      res.json({ message: "No data" });
-//    } else {
-//       res.json(data);
-//    }
+    //     const data = await getOne(req.params.id);
+    //    if (!data.name) {
+    //      res.json({ message: "No data" });
+    //    } else {
+    //       res.json(data);
+    //    }
     res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
