@@ -1,6 +1,6 @@
 const express = require("express");
 const { parsePhoneNumber } = require("awesome-phonenumber");
-const { getOne, getAll } = require("../db/repository");
+const { getOne, getAll, getSaved } = require("../db/repository");
 const { getData } = require("../utils/constants");
 const { stack, caller } = require("../utils/identity");
 const router = express.Router();
@@ -31,6 +31,16 @@ router.get("/get_name/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+//Get all Method
+// router.get("/get_saved", async (req, res) => {
+//   try {
+//     const data = await getSaved();
+//     res.json(data);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 
 router.get("/id/:id", async (req, res) => {
   // console.log(req.params.id);
