@@ -30,6 +30,4 @@ const getInfo = async (command) => {
   };
 };
 
-module.exports = {
-  getInfo,
-};
+module.exports = { getInfo };
