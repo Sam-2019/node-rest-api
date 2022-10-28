@@ -1,6 +1,6 @@
 const paystack = require("paystack-api")(process.env.NIMBLE);
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, getFailedIDS, Model } = require("../db/repository");
+const { getDataIDS, Model } = require("../db/repository");
 const { getData, TIMEOUT, ENOTFOUND } = require("./constants");
 const { shuffle } = require("./shuffle");
 
