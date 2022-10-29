@@ -6,6 +6,7 @@ const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK;
 const SET_INTERVAL = process.env.SET_INTERVAL;
 const TOKEN = process.env.TELEGRAM_TOKEN;
 const TRUECALLER = process.env.TRUECALLER
+const AUTH_KEY = process.env.AUTH_KEY
 
 module.exports = {
   DB_URI,
@@ -15,5 +16,6 @@ module.exports = {
   SLACK_WEBHOOK,
   SET_INTERVAL,
   TOKEN,
-  TRUECALLER
+  TRUECALLER,
+  AUTH_KEY
 };

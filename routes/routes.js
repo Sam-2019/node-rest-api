@@ -3,6 +3,7 @@ const { parsePhoneNumber } = require("awesome-phonenumber");
 const { getOne, getAll, getSaved } = require("../db/repository");
 const { getData } = require("../utils/constants");
 const { stack, caller } = require("../utils/identity");
+const { AUTH_KEY } = require("../utils/config");
 const router = express.Router();
 
 //Get all Method
@@ -43,6 +44,12 @@ router.get("/get_name/:id", async (req, res) => {
 // });
 
 router.get("/id/:id", async (req, res) => {
+  const authorization = req.headers.authorization;
+
+  if (authorization != AUTH_KEY) {
+    return res.json("Konnichiwa");
+  }
+
   let countryCode = "GH";
   const number = req.params.id;
   const pn = parsePhoneNumber(number, countryCode);
