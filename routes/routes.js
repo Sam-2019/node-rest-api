@@ -9,8 +9,14 @@ const router = express.Router();
 //Get all Method
 router.get("/get_names", async (req, res) => {
   try {
-    //     const data = await getAll();
-    //     res.json(data);
+    // const data = await getAll();
+
+    // if (!data) {
+    //   res.json({ message: "Konnichiwa" });
+    // } else {
+    //   res.json(data);
+    // }
+
     res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -19,29 +25,37 @@ router.get("/get_names", async (req, res) => {
 
 // Get by ID Method
 router.get("/get_name/:id", async (req, res) => {
-  console.log({ req: req.params.id });
   try {
-    //     const data = await getOne(req.params.id);
-    //    if (!data.name) {
-    //      res.json({ message: "No data" });
-    //    } else {
-    //       res.json(data);
-    //    }
+    // const data = await getOne(req.params.id);
+
+    // if (!data.name) {
+    //   res.json({ message: "Konnichiwa" });
+    // } else {
+    //   res.json(data);
+    // }
+
     res.json("Konnichiwa");
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-//Get all Method
-// router.get("/get_saved", async (req, res) => {
-//   try {
-//     const data = await getSaved();
-//     res.json(data);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
+// Get all Method
+router.get("/get_saved", async (req, res) => {
+  try {
+    // const data = await getSaved();
+
+    // if (!data) {
+    //   res.json({ message: "Konnichiwa" });
+    // } else {
+    //   res.json(data);
+    // }
+
+    res.json("Konnichiwa");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 router.get("/id/:id", async (req, res) => {
   const authorization = req.headers.authorization;
@@ -68,14 +82,29 @@ router.get("/id/:id", async (req, res) => {
     account_number: paystack.account_number ? paystack.account_number : null,
     bank_id: paystack.bank_id ? paystack.bank_id : null,
     other_name: truecaller[0].name === null ? null : truecaller[0].name,
-    email: truecaller[0].internetAddresses.length === 0 ? null : truecaller[0].internetAddresses[0].id,
-    image:  truecaller[0].image === null ? null : truecaller[0].image,
+    email:
+      truecaller[0].internetAddresses.length === 0
+        ? null
+        : truecaller[0].internetAddresses[0].id,
+    image: truecaller[0].image === null ? null : truecaller[0].image,
     gender: truecaller[0].gender === null ? null : truecaller[0].gender,
     score: truecaller[0].score === null ? null : truecaller[0].score,
-    e164Format: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].e164Format,
-    numberType: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].numberType,
-    countryCode: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].countryCode,
-    carrier: truecaller[0].phones.length === 0 ? null : truecaller[0].phones[0].carrier,
+    e164Format:
+      truecaller[0].phones.length === 0
+        ? null
+        : truecaller[0].phones[0].e164Format,
+    numberType:
+      truecaller[0].phones.length === 0
+        ? null
+        : truecaller[0].phones[0].numberType,
+    countryCode:
+      truecaller[0].phones.length === 0
+        ? null
+        : truecaller[0].phones[0].countryCode,
+    carrier:
+      truecaller[0].phones.length === 0
+        ? null
+        : truecaller[0].phones[0].carrier,
   };
 
   return res.json(output);
