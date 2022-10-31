@@ -23,7 +23,11 @@ const getDataIDS = async () => {
 };
 
 const getFailedIDS = async () => {
-  return await Model.find({ message: MESSAGE });
+  return await Model.find({ message: MESSAGE, is_momo_active: false });
+};
+
+const getMomoStatus = async ({ data }) => {
+  return await Model.find({ is_momo_active: data });
 };
 
 const getRemaining = async () => {
@@ -53,6 +57,9 @@ const clearMessage = async (data) => {
 };
 
 const addMomoActiveForInactiveNumbers = async () => {
+  const data = getMomoStatus(false);
+  if (data) return;
+
   const res = await Model.updateMany(
     {
       message: MESSAGE,
@@ -71,6 +78,9 @@ const addMomoActiveForInactiveNumbers = async () => {
 };
 
 const addMomoActiveForActiveNumbers = async () => {
+  const data = getMomoStatus(true);
+  if (data) return;
+
   const res = await Model.updateMany(
     {
       bank_id: {

@@ -21,7 +21,7 @@ async function messageCleanup() {
 
 async function momoActive() {
   addMomoActiveForActiveNumbers();
-  // addMomoActiveForInactiveNumbers();
+  addMomoActiveForInactiveNumbers();
 }
 
 module.exports = {
