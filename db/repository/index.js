@@ -102,6 +102,38 @@ const addMomoActiveForActiveNumbers = async () => {
   );
 };
 
+const updateValidNumber = async (body, newInfo) => {
+  await Model.findByIdAndUpdate(
+    newInfo[0].id,
+    {
+      $set: {
+        name: body.data.account_name,
+        account_number: body.data.account_number,
+        bank_id: body.data.bank_id,
+        is_momo_active: true,
+      },
+    },
+    {
+      new: false,
+    }
+  );
+};
+
+const updateInvalidNumber = async (error, newInfo) => {
+  await Model.findByIdAndUpdate(
+    newInfo[0].id,
+    {
+      $set: {
+        message: error.error.message,
+        is_momo_active: false,
+      },
+    },
+    {
+      new: false,
+    }
+  );
+};
+
 module.exports = {
   getSaved,
   getFailed,
@@ -113,5 +145,7 @@ module.exports = {
   clearMessage,
   addMomoActiveForInactiveNumbers,
   addMomoActiveForActiveNumbers,
+  updateValidNumber,
+  updateInvalidNumber,
   Model,
 };
