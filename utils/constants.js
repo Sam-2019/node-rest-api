@@ -15,6 +15,8 @@ const networkCodes = [
   { airteltigo: ["027", "057", "026", "056"] },
 ];
 
+const justBankIDs = ["28", "29", "66"];
+
 const bankIDs = {
   mtn: {
     id: 28,
@@ -59,5 +61,6 @@ module.exports = {
   TIMEOUT,
   ENOTFOUND,
   bankIDs,
+  justBankIDs,
   getData,
 };
