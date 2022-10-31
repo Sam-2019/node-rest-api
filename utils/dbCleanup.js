@@ -20,8 +20,8 @@ async function messageCleanup() {
 }
 
 async function momoActive() {
-  // addMomoActiveForActiveNumbers();
-  addMomoActiveForInactiveNumbers();
+  addMomoActiveForActiveNumbers();
+  // addMomoActiveForInactiveNumbers();
 }
 
 module.exports = {
