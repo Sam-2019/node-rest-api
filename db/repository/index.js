@@ -26,7 +26,7 @@ const getFailedIDS = async () => {
   return await Model.find({ message: MESSAGE, is_momo_active: false });
 };
 
-const getMomoStatus = async ({ data }) => {
+const getMomoStatus = async (data) => {
   return await Model.find({ is_momo_active: data });
 };
 
@@ -57,7 +57,7 @@ const clearMessage = async (data) => {
 };
 
 const addMomoActiveForInactiveNumbers = async () => {
-  const data = getMomoStatus(false);
+  const data = await getMomoStatus(false);
   if (data) return;
 
   const res = await Model.updateMany(
@@ -66,7 +66,6 @@ const addMomoActiveForInactiveNumbers = async () => {
     },
     { is_momo_active: false }
   );
-
   console.log("//INACTIVE");
   console.log(
     res.matchedCount,
@@ -78,7 +77,7 @@ const addMomoActiveForInactiveNumbers = async () => {
 };
 
 const addMomoActiveForActiveNumbers = async () => {
-  const data = getMomoStatus(true);
+  const data = await getMomoStatus(true);
   if (data) return;
 
   const res = await Model.updateMany(
