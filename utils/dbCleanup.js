@@ -6,17 +6,16 @@ const {
   addMomoActiveForActiveNumbers,
 } = require("../db/repository");
 const { SET_INTERVAL } = require("./config");
-
-const bankIDs = ["28", "29", "66"];
+const { justBankIDs } = require("./constants");
 
 async function messageCleanup() {
   setInterval(async function () {
-    shuffle(bankIDs);
+    shuffle(justBankIDs[0]);
 
-    const results = await getFailedWithIDS(bankIDs[0]);
+    const results = await getFailedWithIDS(justBankIDs[0]);
     if (!results) return;
 
-    await clearMessage(bankIDs[0]);
+    await clearMessage(justBankIDs[0]);
   }, SET_INTERVAL);
 }
 
