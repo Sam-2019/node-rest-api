@@ -1,8 +1,8 @@
-const paystack = require("paystack-api")(process.env.NIMBLE);
 const { SET_INTERVAL } = require("./config");
-const { getDataIDS, Model } = require("../db/repository");
+const { getDataIDS } = require("../db/repository");
 const { getData } = require("./constants");
 const { shuffle } = require("./shuffle");
+const { resolveNumber } = require("./paystack");
 
 async function shuffleRunner() {
   let newInfo;
@@ -36,18 +36,7 @@ async function shuffleRunner() {
 
     const result = getData(newInfo[0].number);
 
-    paystack.verification
-      .resolveAccount({
-        account_number: `${newInfo[0].number}`,
-        bank_code: result,
-      })
-      .then(async function (body) {
-        await updateValidNumber(body, newInfo);
-      })
-      .catch(async function (error) {
-        await updateInvalidNumber(error, newInfo);
-        console.log("No data");
-      });
+    resolveNumber(newInfo, result);
   }, SET_INTERVAL);
 }
 
