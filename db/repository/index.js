@@ -131,6 +131,7 @@ module.exports = {
   getSaved,
   getFailed,
   getDataIDS,
+  getFailedIDS,
   getRemaining,
   getAll,
   getOne,
