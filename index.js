@@ -4,7 +4,6 @@ const express = require("express");
 const { PORT, NODE_ENV } = require("./utils/config");
 const { shuffleRunner } = require("./utils/runner");
 const { bot } = require("./utils/telegraf");
-const { messageCleanup, momoActive } = require("./utils/dbCleanup");
 const { ping } = require("./utils/ping");
 
 require("./db/index");
@@ -15,11 +14,9 @@ app.use(express.json());
 
 const routes = require("./routes/routes");
 app.use("/api", routes);
-momoActive();
-// shuffleRunner();
-// messageCleanup();
-// ping();
-// bot.launch();
+shuffleRunner();
+ping();
+bot.launch();
 
 const port = PORT || 4000;
 
