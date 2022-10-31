@@ -51,7 +51,7 @@ async function shuffleRunner() {
               name: body.data.account_name,
               account_number: body.data.account_number,
               bank_id: body.data.bank_id,
-              // momo_active: body.data.momo_active,
+              is_momo_active: true,
             },
           },
           {
@@ -73,6 +73,7 @@ async function shuffleRunner() {
           {
             $set: {
               message: error.error.message,
+              is_momo_active: false,
             },
           },
           {
