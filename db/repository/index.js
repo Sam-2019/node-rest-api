@@ -45,10 +45,51 @@ const getFailedWithIDS = async (data) => {
   return await Model.find({ bank_id: data, message: MESSAGE });
 };
 
-const updateMany = async (data) => {
+const clearMessage = async (data) => {
   return await Model.updateMany(
     { bank_id: data, message: MESSAGE },
     { message: null }
+  );
+};
+
+const addMomoActiveForInactiveNumbers = async () => {
+  const res = await Model.updateMany(
+    {
+      message: MESSAGE,
+    },
+    { is_momo_active: false }
+  );
+
+  console.log("//INACTIVE");
+  console.log(
+    res.matchedCount,
+    res.modifiedCount,
+    res.acknowledged,
+    res.upsertedId,
+    res.upsertedCount
+  );
+};
+
+const addMomoActiveForActiveNumbers = async () => {
+  const res = await Model.updateMany(
+    {
+      bank_id: {
+        $in: [
+          `${bankIDs.mtn.id}`,
+          `${bankIDs.airteltigo.id}`,
+          `${bankIDs.vodafone.id}`,
+        ],
+      },
+    },
+    { is_momo_active: true }
+  );
+  console.log("//ACTIVE");
+  console.log(
+    res.matchedCount,
+    res.modifiedCount,
+    res.acknowledged,
+    res.upsertedId,
+    res.upsertedCount
   );
 };
 
@@ -60,6 +101,8 @@ module.exports = {
   getAll,
   getOne,
   getFailedWithIDS,
-  updateMany,
+  clearMessage,
+  addMomoActiveForInactiveNumbers,
+  addMomoActiveForActiveNumbers,
   Model,
 };
