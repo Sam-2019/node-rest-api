@@ -1,6 +1,7 @@
 const { MESSAGE, justBankIDs } = require("../../utils/constants");
 const { model } = require("../model");
-const Model = model("number");
+const { ACTIVE_MODEL } = require("../../utils/config");
+const Model = model(ACTIVE_MODEL);
 
 const getSaved = async () => {
   return await Model.find({

@@ -7,6 +7,7 @@ const SET_INTERVAL = process.env.SET_INTERVAL;
 const TOKEN = process.env.TELEGRAM_TOKEN;
 const TRUECALLER = process.env.TRUECALLER
 const AUTH_KEY = process.env.AUTH_KEY
+const ACTIVE_MODEL = process.env.ACTIVE_MODEL
 
 module.exports = {
   DB_URI,
@@ -17,5 +18,6 @@ module.exports = {
   SET_INTERVAL,
   TOKEN,
   TRUECALLER,
-  AUTH_KEY
+  AUTH_KEY,
+  ACTIVE_MODEL
 };
