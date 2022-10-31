@@ -1,15 +1,11 @@
-const { MESSAGE, bankIDs } = require("../../utils/constants");
+const { MESSAGE, justBankIDs } = require("../../utils/constants");
 const { model } = require("../model");
-const Model = model("attendee");
+const Model = model("number");
 
 const getSaved = async () => {
   return await Model.find({
     bank_id: {
-      $in: [
-        `${bankIDs.mtn.id}`,
-        `${bankIDs.airteltigo.id}`,
-        `${bankIDs.vodafone.id}`,
-      ],
+      $in: justBankIDs,
     },
   }).countDocuments();
 };
@@ -83,11 +79,7 @@ const addMomoActiveForActiveNumbers = async () => {
   const res = await Model.updateMany(
     {
       bank_id: {
-        $in: [
-          `${bankIDs.mtn.id}`,
-          `${bankIDs.airteltigo.id}`,
-          `${bankIDs.vodafone.id}`,
-        ],
+        $in: justBankIDs,
       },
     },
     { is_momo_active: true }
