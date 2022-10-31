@@ -4,7 +4,7 @@ const { updateInvalidNumber, updateValidNumber } = require("../db/repository");
 function resolveNumber(newInfo, result) {
   paystack.verification
     .resolveAccount({
-      account_number: `${newInfo[0].number}`,
+      account_number: String(newInfo[0].number),
       bank_code: result,
     })
     .then(async function (body) {
