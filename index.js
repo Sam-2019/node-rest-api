@@ -17,9 +17,9 @@ const routes = require("./routes/routes");
 app.use("/api", routes);
 momoActive();
 // shuffleRunner();
-messageCleanup();
-ping();
-bot.launch();
+// messageCleanup();
+// ping();
+// bot.launch();
 
 const port = PORT || 4000;
 
