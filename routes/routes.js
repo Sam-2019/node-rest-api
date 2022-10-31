@@ -7,7 +7,7 @@ const { AUTH_KEY } = require("../utils/config");
 const router = express.Router();
 
 //Get all Method
-router.get("/get_names", async (req, res) => {
+router.get("/names", async (req, res) => {
   try {
     // const data = await getAll();
 
