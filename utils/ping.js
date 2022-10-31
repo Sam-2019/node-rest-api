@@ -29,8 +29,6 @@ function ping() {
   }, SET_INTERVAL);
 }
 
-ping();
-
 module.exports = {
   ping,
   pingHellio,

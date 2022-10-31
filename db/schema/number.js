@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 
 const dataSchema = new mongoose.Schema({
-  name: {
+  id_number: {
+    type: Number,
+  },
+  number: {
     type: String,
   },
-  phone: {
-    required: true,
+  name: {
     type: String,
   },
   account_number: {
@@ -14,7 +16,10 @@ const dataSchema = new mongoose.Schema({
   bank_id: {
     type: String,
   },
-  momo_active: {
+  is_momo_active: {
+    type: Boolean,
+  },
+  message: {
     type: String,
   },
 });

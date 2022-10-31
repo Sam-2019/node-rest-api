@@ -1,4 +1,4 @@
 const mongoose = require("mongoose");
-const { dataSchema } = require("./models/attendees");
+const { dataSchema } = require("../schema/attendee");
 
 module.exports = mongoose.model("Attendees", dataSchema);

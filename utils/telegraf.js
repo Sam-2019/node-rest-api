@@ -1,32 +1,25 @@
 const { Telegraf } = require("telegraf");
 const { TOKEN } = require("./config");
-const { pingHellio } = require("./ping");
-const { getSaved, getFailed, getRemaining } = require("../db/attendee_repositories");
+const { getInfo } = require("./command_switch");
 const bot = new Telegraf(TOKEN);
 
-bot.command("ping", async (ctx) => {
-  ctx.reply("app pinged!");
-});
+async function run_comand(command) {
+  let { model, text } = await getInfo(command);
 
-bot.command("saved", async (ctx) => {
-  const data = await getSaved();
-  ctx.reply(`Saved ${data}`);
-});
+  bot.command(command, async (ctx) => {
+    if (model === null) {
+      return ctx.reply(text);
+    }
 
-bot.command("failed", async (ctx) => {
-  const data = await getFailed();
-  ctx.reply(`Failed ${data}`);
-});
+    ctx.reply(`${text} ${model}`);
+  });
+}
 
-bot.command("rawIDs", async (ctx) => {
-  const data = await getRemaining();
-  ctx.reply(`Untouched ${data}`);
-});
-
-bot.command("hellio", async (ctx) => {
-  const data = await pingHellio();
-  ctx.reply(`${data}`);
-});
+run_comand("ping");
+run_comand("saved");
+run_comand("failed");
+run_comand("rawIDs");
+run_comand("hellio");
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
