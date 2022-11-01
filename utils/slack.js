@@ -5,10 +5,10 @@ const webhook = new IncomingWebhook(SLACK_WEBHOOK);
 
 const slackNotify = async (message, title, data = null) =>
   await webhook.send({
-    text: `${message}`,
+    text: String(message),
     attachments: [
       {
-        fields: [{ title: `${title}`, value: data, short: false }],
+        fields: [{ title: String(title), value: data, short: false }],
       },
     ],
   });
