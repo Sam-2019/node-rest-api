@@ -1,10 +1,11 @@
 const express = require("express");
-const { parsePhoneNumber } = require("awesome-phonenumber");
-const { getOne, getAll, getSaved } = require("../db/repository");
+const router = express.Router();
+const { AUTH_KEY } = require("../utils/config");
 const { getData } = require("../utils/constants");
 const { stack, caller } = require("../utils/identity");
-const { AUTH_KEY } = require("../utils/config");
-const router = express.Router();
+const { parsePhoneNumber } = require("awesome-phonenumber");
+const { getOne, getAll, getSaved } = require("../db/repository");
+const { addIdentity, getIdentity } = require("../db/repository/identity");
 
 //Get all Method
 router.get("/names", async (req, res) => {
@@ -69,10 +70,15 @@ router.get("/id/:id", async (req, res) => {
   const pn = parsePhoneNumber(number, countryCode);
   const phone = pn.getNumber("significant"); // -> '707123456'
   const updated = `0${phone}`;
+
+  const localSearch = await getIdentity(updated);
+
+  if (localSearch) {
+    return res.json(localSearch);
+  }
+
   const accountCode = getData(updated);
-
   const paystack = await stack(updated, accountCode, res);
-
   const info = await caller(pn, res);
   const transformer = JSON.parse(info);
   const truecaller = transformer.data;
@@ -106,6 +112,8 @@ router.get("/id/:id", async (req, res) => {
         ? null
         : truecaller[0].phones[0].carrier,
   };
+
+  addIdentity(output);
 
   return res.json(output);
 });
