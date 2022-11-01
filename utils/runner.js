@@ -45,6 +45,5 @@ async function shuffleRunner() {
 }
 
 module.exports = {
-  shuffle,
   shuffleRunner,
 };
