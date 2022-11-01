@@ -26,10 +26,14 @@ async function shuffleRunner() {
 
     shuffle(newInfo);
 
+    //remove or comment out
+    // no more anymore
     if (newInfo[0].name && newInfo[0].is_momo_active) {
       return;
     }
 
+    // remove or comment out
+    // no more anymore
     if (newInfo[0].message) {
       return;
     }
