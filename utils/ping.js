@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { slackNotify } = require("./slack");
 const { SET_INTERVAL } = require("./config");
-const { HELIOSDOWN, HELIOSUP, HELIOSURL } = require("./constants");
+const { HELIOSDOWN, HELIOSUP, HELIOSURL, HELIOSMS } = require("./constants");
 
 async function pingHellio() {
   try {
@@ -24,7 +24,7 @@ function ping() {
       })
       .catch((error) => {
         console.log(HELIOSDOWN);
-        slackNotify("HellioSMS", error);
+        slackNotify(HELIOSMS, error);
       });
   }, SET_INTERVAL);
 }
