@@ -4,7 +4,7 @@ const { ACTIVE_MODEL } = require("../../utils/config");
 const Model = model(ACTIVE_MODEL);
 
 const getSaved = async () => {
-  return await Model.where("is_momo_active", true).countDocuments();
+  return await Model.find({is_momo_active: true).countDocuments();
 };
 
 const getFailed = async () => {
