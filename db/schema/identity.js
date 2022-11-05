@@ -5,24 +5,15 @@ const dataSchema = new mongoose.Schema({
     type: String,
   },
   other_name: {
-    type: String,
-  },
-  phone: {
-    type: String,
-  },
-  bank_id: {
-    type: String,
+    type: String
   },
   email: {
     type: String,
   },
-  image: {
-    type: Boolean,
-  },
   gender: {
     type: String,
   },
-  score: {
+  account_number: {
     type: String,
   },
   e164Format: {
@@ -31,12 +22,21 @@ const dataSchema = new mongoose.Schema({
   numberType: {
     type: String,
   },
-  countryCode: {
+  bank_id: {
     type: String,
   },
   carrier: {
     type: String,
   },
+  countryCode: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
+  score: {
+    type: Number,
+  }
 });
 
 module.exports = {
