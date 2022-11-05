@@ -1,21 +1,20 @@
 const MESSAGE =
   "Could not resolve account name. Check parameters or try again.";
+const HELIOSMS = "HellioSMS";
 const HELIOSMS1 = "⚠ ⚠ ⚠ Issues With Message Delivery ⚠ ⚠ ⚠";
 const HELIOSMS2 =
   "Our apologies for the issues currently being faced with delivery of messages";
 const HELIOSDOWN = "HellioSMS: server is down";
 const HELIOSUP = "HellioSMS: server is up";
 const HELIOSURL = "https://helliomessaging.com";
-const TIMEOUT = "Endpoint request timed out"
-const ENOTFOUND = "getaddrinfo ENOTFOUND api.paystack.co"
+const TIMEOUT = "Endpoint request timed out";
+const ENOTFOUND = "getaddrinfo ENOTFOUND api.paystack.co";
 
 const networkCodes = [
   { mtn: ["024", "054", "055", "059", "025"] },
   { vodafone: ["020", "050"] },
   { airteltigo: ["027", "057", "026", "056"] },
 ];
-
-const justBankIDs = ["28", "29", "66"];
 
 const bankIDs = {
   mtn: {
@@ -32,10 +31,14 @@ const bankIDs = {
   },
 };
 
+const justBankIDs = [
+  String(bankIDs.mtn.id),
+  String(bankIDs.airteltigo.id),
+  String(bankIDs.vodafone.id),
+];
+
 const getData = (data) => {
   const slicedPhone = data.slice(0, 3);
-
-  // console.log(slicedPhone);
 
   if (networkCodes[0].mtn.includes(slicedPhone)) {
     return bankIDs.mtn.code;
@@ -48,11 +51,9 @@ const getData = (data) => {
   return bankIDs.airteltigo.code;
 };
 
-// const info = getData(number);
-// console.log({ info });
-
 module.exports = {
   MESSAGE,
+  HELIOSMS,
   HELIOSMS1,
   HELIOSMS2,
   HELIOSDOWN,

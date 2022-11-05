@@ -1,5 +1,5 @@
-const { getSaved, getFailed, getRemaining } = require("../db/repository");
-const { pingHellio } = require("./ping");
+const { getSaved, getFailed, getRemaining } = require("../../db/repository");
+const { pingHellio } = require("../ping");
 
 const getInfo = async (command) => {
   let model; let text;
