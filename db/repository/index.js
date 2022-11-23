@@ -11,8 +11,8 @@ const getFailed = async () => {
   return await Model.where("message", MESSAGE).countDocuments();
 };
 
-const getTimeout = async () => {
-   return await Model.where("message", TIMEOUT).countDocuments();
+const getTimeout = async (message) => {
+   return await Model.find("message", message);
 }
 
 const getDataIDS = async () => {
@@ -127,6 +127,16 @@ const updateInvalidNumber = async (error, newInfo) => {
   );
 };
 
+const timeoutCleanup = async () => {
+    const data = await getTimeout(TIMEOUT);
+    if (!data) return;
+  
+    return await Model.updateMany(
+    { message: TIMEOUT },
+    { message: null, is_momo_active: null }
+  );
+}
+
 module.exports = {
   getSaved,
   getFailed,
@@ -142,5 +152,6 @@ module.exports = {
   addMomoActiveForActiveNumbers,
   updateValidNumber,
   updateInvalidNumber,
+  timeoutCleanup,
   Model,
 };
