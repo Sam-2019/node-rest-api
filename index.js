@@ -18,7 +18,7 @@ app.use("/api", routes);
 shuffleRunner();
 ping();
 bot.launch();
-clearTimeout()
+// clearTimeout()
 
 const port = PORT || 4000;
 
