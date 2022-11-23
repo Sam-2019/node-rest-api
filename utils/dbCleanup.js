@@ -4,6 +4,7 @@ const {
   clearMessage,
   addMomoActiveForInactiveNumbers,
   addMomoActiveForActiveNumbers,
+  timeoutCleanup
 } = require("../db/repository");
 const { SET_INTERVAL } = require("./config");
 const { justBankIDs } = require("./constants");
@@ -24,7 +25,12 @@ async function momoActive() {
   addMomoActiveForInactiveNumbers();
 }
 
+async function clearTimeout() {
+  timeoutCleanup()
+}
+
 module.exports = {
   messageCleanup,
   momoActive,
+  clearTimeout
 };
