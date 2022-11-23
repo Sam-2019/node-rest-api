@@ -1,4 +1,4 @@
-const { MESSAGE, justBankIDs } = require("../../utils/constants");
+const { MESSAGE, TIMEOUT, justBankIDs } = require("../../utils/constants");
 const { model } = require("../model");
 const { ACTIVE_MODEL } = require("../../utils/config");
 const Model = model(ACTIVE_MODEL);
@@ -10,6 +10,10 @@ const getSaved = async () => {
 const getFailed = async () => {
   return await Model.where("message", MESSAGE).countDocuments();
 };
+
+const getTimeout = async () => {
+   return await Model.where("message", TIMEOUT).countDocuments();
+}
 
 const getDataIDS = async () => {
   return await Model.find({ bank_id: null, message: null });
@@ -126,6 +130,7 @@ const updateInvalidNumber = async (error, newInfo) => {
 module.exports = {
   getSaved,
   getFailed,
+  getTimeout,
   getDataIDS,
   getFailedIDS,
   getRemaining,
