@@ -5,6 +5,7 @@ const { PORT, NODE_ENV } = require("./utils/config");
 const { shuffleRunner } = require("./utils/runner");
 const { bot } = require("./utils/telegraf");
 const { ping } = require("./utils/ping");
+const { clearTimeout } = require("./utils/dbCleanup");
 
 require("./db/index");
 
@@ -17,6 +18,7 @@ app.use("/api", routes);
 shuffleRunner();
 ping();
 bot.launch();
+clearTimeout()
 
 const port = PORT || 4000;
 
