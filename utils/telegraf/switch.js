@@ -1,12 +1,12 @@
-const { bot } = require(".");
+const { bot } = require("./index");
 const { getSaved, getFailed, getRemaining } = require("../../db/repository");
 const { pingHellio } = require("../ping");
 
-const getInfo = async (command) => {
+const getInfo = async (action) => {
   let model;
   let text;
 
-  switch (command) {
+  switch (action) {
     case "saved":
       model = await getSaved();
       text = "Saved";
@@ -34,16 +34,4 @@ const getInfo = async (command) => {
   };
 };
 
-async function run_comand(command) {
-  let { model, text } = await getInfo(command);
-
-  bot.command(command, async (ctx) => {
-    if (model === null) {
-      return ctx.reply(text);
-    }
-
-    ctx.reply(`${text} ${model}`);
-  });
-}
-
-module.exports = { run_comand };
+module.exports = { getInfo };
