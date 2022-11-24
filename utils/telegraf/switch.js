@@ -1,4 +1,3 @@
-const { bot } = require("./index");
 const { getSaved, getFailed, getRemaining } = require("../../db/repository");
 const { pingHellio } = require("../ping");
 
