@@ -4,16 +4,16 @@ const { ACTIVE_MODEL } = require("../../utils/config");
 const Model = model(ACTIVE_MODEL);
 
 const getSaved = async () => {
-  return await Model.find({is_momo_active: true}).countDocuments();
+  return await Model.find({ is_momo_active: true }).countDocuments();
 };
 
 const getFailed = async () => {
   return await Model.where("message", MESSAGE).countDocuments();
 };
 
-const getTimeout = async (message) => {
-   return await Model.find("message", message);
-}
+const getTimeout = async () => {
+  return await Model.find({ message: TIMEOUT });
+};
 
 const getDataIDS = async () => {
   return await Model.find({ bank_id: null, message: null });
@@ -128,14 +128,14 @@ const updateInvalidNumber = async (error, newInfo) => {
 };
 
 const timeoutCleanup = async () => {
-    const data = await getTimeout(TIMEOUT);
-    if (!data) return;
-  
-    return await Model.updateMany(
+  const data = await getTimeout();
+  if (!data) return;
+
+  return await Model.updateMany(
     { message: TIMEOUT },
     { message: null, is_momo_active: null }
   );
-}
+};
 
 module.exports = {
   getSaved,
