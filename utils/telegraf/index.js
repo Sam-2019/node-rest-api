@@ -3,7 +3,7 @@ const { TOKEN } = require("../config");
 const bot = new Telegraf(TOKEN);
 const { getInfo } = require("./switch");
 
-async function run_comand(command) {
+async function run_command(command) {
   let { model, text } = await getInfo(command);
 
   bot.command(command, async (ctx) => {
@@ -14,11 +14,11 @@ async function run_comand(command) {
   });
 }
 
-run_comand("ping");
-run_comand("saved");
-run_comand("failed");
-run_comand("rawIDs");
-run_comand("hellio");
+run_command("ping");
+run_command("saved");
+run_command("failed");
+run_command("rawIDs");
+run_command("hellio");
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
