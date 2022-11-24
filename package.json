@@ -19,7 +19,7 @@
     "mongoose": "^6.5.2",
     "nodemon": "^2.0.19",
     "paystack-api": "^2.0.6",
-    "telegraf": "^4.8.6",
+    "telegraf": "^4.11.2",
     "truecallerjs": "^1.1.1"
   }
 }
