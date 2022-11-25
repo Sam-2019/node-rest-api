@@ -140,6 +140,7 @@ const timeoutCleanup = async () => {
 module.exports = {
   getSaved,
   getFailed,
+  getTimeout,
   getDataIDS,
   getFailedIDS,
   getRemaining,
