@@ -12,7 +12,7 @@ const getFailed = async () => {
 };
 
 const getTimeout = async () => {
-  return await Model.find({ message: TIMEOUT });
+  return await Model.find({ message: TIMEOUT }).countDocuments();
 };
 
 const getDataIDS = async () => {
@@ -128,8 +128,8 @@ const updateInvalidNumber = async (error, newInfo) => {
 };
 
 const timeoutCleanup = async () => {
-  const data = await getTimeout();
-  if (!data) return;
+  const count = await getTimeout();
+  if (count === 0) return;
 
   return await Model.updateMany(
     { message: TIMEOUT },
