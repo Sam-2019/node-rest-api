@@ -1,4 +1,9 @@
-const { getSaved, getFailed, getRemaining } = require("../../db/repository");
+const {
+  getSaved,
+  getFailed,
+  getRemaining,
+  getTimeout,
+} = require("../../db/repository");
 const { pingHellio } = require("../ping");
 
 const getInfo = async (action) => {
@@ -13,6 +18,10 @@ const getInfo = async (action) => {
     case "failed":
       model = await getFailed();
       text = "Failed";
+      break;
+    case "timeout":
+      model = await getTimeout();
+      text = "";
       break;
     case "rawIDs":
       model = await getRemaining();
