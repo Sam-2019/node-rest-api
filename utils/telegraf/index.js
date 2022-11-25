@@ -19,6 +19,7 @@ run_command("saved");
 run_command("failed");
 run_command("rawIDs");
 run_command("hellio");
+run_command("timeout");
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
