@@ -1,5 +1,5 @@
+const https = require("node:https");
 const axios = require("axios");
-const { slackNotify } = require("./slack");
 const { SET_INTERVAL } = require("./config");
 const { HELIOSDOWN, HELIOSUP, HELIOSURL, HELIOSMS } = require("./constants");
 
@@ -11,11 +11,14 @@ async function pingHellio() {
     })
     .catch((error) => {
       console.log(HELIOSDOWN);
-      slackNotify(HELIOSMS, error);
     });
 }
 
 function ping() {
+  setInterval(() => {
+    https.get("https://name-node-rest-api.herokuapp.com/");
+  }, 25 * 60 * 1000);
+
   setInterval(async function () {
     pingHellio();
   }, SET_INTERVAL);
