@@ -16,7 +16,9 @@ async function pingHellio() {
 
 function ping() {
   setInterval(() => {
-    https.get("https://name-node-rest-api.herokuapp.com/");
+    https.get("https://name-node-rest-api.herokuapp.com/", () => {
+      console.log("server running");
+    });
   }, 25 * 60 * 1000);
 
   setInterval(async function () {
