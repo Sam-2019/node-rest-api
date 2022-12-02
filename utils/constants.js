@@ -10,45 +10,42 @@ const HELIOSURL = "https://helliomessaging.com";
 const TIMEOUT = "Endpoint request timed out";
 const ENOTFOUND = "getaddrinfo ENOTFOUND api.paystack.co";
 
-const networkCodes = [
-  { mtn: ["024", "054", "055", "059", "025"] },
-  { vodafone: ["020", "050"] },
-  { airteltigo: ["027", "057", "026", "056"] },
-];
-
-const bankIDs = {
+const telco = {
   mtn: {
     id: 28,
-    code: "MTN",
+    bankcode: "MTN",
+    prefix: ["024", "054", "055", "059", "025"],
   },
   vodafone: {
     id: 66,
-    code: "VOD",
+    bankcode: "VOD",
+    prefix: ["020", "050"],
   },
   airteltigo: {
     id: 29,
-    code: "ATL",
+    bankcode: "ATL",
+    prefix: ["027", "057", "026", "056"],
   },
 };
 
 const justBankIDs = [
-  String(bankIDs.mtn.id),
-  String(bankIDs.airteltigo.id),
-  String(bankIDs.vodafone.id),
+  String(telco.mtn.id),
+  String(telco.airteltigo.id),
+  String(telco.vodafone.id),
 ];
 
 const getData = (data) => {
   const slicedPhone = data.slice(0, 3);
 
-  if (networkCodes[0].mtn.includes(slicedPhone)) {
-    return bankIDs.mtn.code;
+  if (telco.mtn.prefix.includes(slicedPhone)) {
+    return telco.mtn.bankcode;
   }
 
-  if (networkCodes[1].vodafone.includes(slicedPhone)) {
-    return bankIDs.vodafone.code;
+  if (telco.vodafone.prefix.includes(slicedPhone)) {
+    return telco.vodafone.bankcode;
   }
 
-  return bankIDs.airteltigo.code;
+  return telco.airteltigo.bankcode;
 };
 
 module.exports = {
@@ -61,7 +58,6 @@ module.exports = {
   HELIOSURL,
   TIMEOUT,
   ENOTFOUND,
-  bankIDs,
   justBankIDs,
   getData,
 };
