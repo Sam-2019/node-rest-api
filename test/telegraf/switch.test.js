@@ -6,7 +6,7 @@ test("saved action", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
-  //   expect(result.model)
+  expect(() => result.model()).toThrow(Error);
 });
 
 test("failed action", async () => {
@@ -15,7 +15,7 @@ test("failed action", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
-  //   expect(result.model)
+  expect(() => result.model()).toThrow(Error);
 });
 
 test("timeout action", async () => {
@@ -23,8 +23,8 @@ test("timeout action", async () => {
   expect(result.text).toBe("");
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
-  expect(result.text).toBeTruthy();
-  //   expect(result.model)
+  expect(result.text).toBeFalsy();
+  expect(() => result.model()).toThrow(Error);
 });
 
 test("get_remaining action", async () => {
@@ -33,17 +33,10 @@ test("get_remaining action", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
-  //   expect(result.model)
+  expect(() => result.model()).toThrow(Error);
 });
 
-test("hellio action", async () => {
-  //   const result = await getInfo("hellio");
-  //   expect(result.text).toBe("");
-  //   expect(result.text).not.toBeNull();
-  //   expect(result.text).toBeDefined();
-  //   expect(result.text).toBeTruthy();
-  //   expect(result.model)
-});
+test("hellio action", async () => {});
 
 test("app ping", async () => {
   const result = await getInfo();
@@ -51,5 +44,5 @@ test("app ping", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
-  //   expect(result.model)
+  expect(() => result.model()).toThrow(Error);
 });
