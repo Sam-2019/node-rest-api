@@ -4,15 +4,15 @@ const { ACTIVE_MODEL } = require("../../utils/config");
 const Model = model(ACTIVE_MODEL);
 
 const getSaved = async () => {
-  return await Model.find({ is_momo_active: true }).countDocuments();
+  // return await Model.find({ is_momo_active: true }).countDocuments();
 };
 
 const getFailed = async () => {
-  return await Model.where("message", MESSAGE).countDocuments();
+  // return await Model.where("message", MESSAGE).countDocuments();
 };
 
 const getTimeout = async () => {
-  return await Model.find({ message: TIMEOUT }).countDocuments();
+  // return await Model.find({ message: TIMEOUT }).countDocuments();
 };
 
 const getDataIDS = async () => {
@@ -28,10 +28,10 @@ const getMomoStatus = async (data) => {
 };
 
 const getRemaining = async () => {
-  return await Model.find({
-    bank_id: null,
-    message: null,
-  }).countDocuments();
+  // return await Model.find({
+  //   bank_id: null,
+  //   message: null,
+  // }).countDocuments();
 };
 
 const getAll = async () => {
