@@ -58,6 +58,7 @@ module.exports = {
   HELIOSURL,
   TIMEOUT,
   ENOTFOUND,
+  telco,
   justBankIDs,
   getData,
 };
