@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { getInfo } = require("../../utils/telegraf/switch");
 
 test("saved action", async () => {
