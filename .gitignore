@@ -9,3 +9,5 @@ utils/response.txt
 db/repository/index_dummy
 yarn-error.log
 utils/waste.txt
+coverage
+test/db/test waste.txt
