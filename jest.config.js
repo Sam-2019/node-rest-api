@@ -12,9 +12,10 @@ module.exports = {
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\USER\\AppData\\Local\\Temp\\jest",
-
+  testEnvironment: 'node',
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
+  testTimeout: 20000,
 
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
