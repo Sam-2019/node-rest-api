@@ -7,6 +7,7 @@ test("saved action", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
+  expect(result.model).toBeUndefined();
   expect(() => result.model()).toThrow(Error);
 });
 
@@ -16,6 +17,7 @@ test("failed action", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
+  expect(result.model).toBeUndefined();
   expect(() => result.model()).toThrow(Error);
 });
 
@@ -25,6 +27,7 @@ test("timeout action", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeFalsy();
+  expect(result.model).toBeUndefined();
   expect(() => result.model()).toThrow(Error);
 });
 
@@ -34,10 +37,14 @@ test("get_remaining action", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
+  expect(result.model).toBeUndefined();
   expect(() => result.model()).toThrow(Error);
 });
 
-test("hellio action", async () => {});
+test("hellio action", async () => {
+  const result = await getInfo();
+  expect(result.model).toBeNull();
+});
 
 test("app ping", async () => {
   const result = await getInfo();
@@ -45,5 +52,6 @@ test("app ping", async () => {
   expect(result.text).not.toBeNull();
   expect(result.text).toBeDefined();
   expect(result.text).toBeTruthy();
+  expect(result.model).toBeNull();
   expect(() => result.model()).toThrow(Error);
 });
