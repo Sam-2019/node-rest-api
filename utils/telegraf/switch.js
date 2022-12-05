@@ -29,7 +29,7 @@ const getInfo = async (action) => {
       break;
     case "hellio":
       model = await pingHellio();
-      text = "";
+      text = null;
       break;
     default:
       model = null;
