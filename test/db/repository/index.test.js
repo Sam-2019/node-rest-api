@@ -10,6 +10,6 @@ test("should fetch users", () => {
   expect(users).toEqual(local_users);
   expect(users).toBeTruthy();
 
-  console.log(users);
+  //   console.log(users);
   //   expect(users).toContain("Bob");
 });
