@@ -1,4 +1,4 @@
-// const https = require("node:https");
+const https = require("node:https");
 const axios = require("axios");
 const { SET_INTERVAL } = require("./config");
 const { HELIOSDOWN, HELIOSUP, HELIOSURL, HELIOSMS } = require("./constants");
@@ -16,9 +16,9 @@ async function pingHellio() {
 
 function ping() {
   setInterval(() => {
-//     https.get("https://name-node-rest-api.herokuapp.com/", () => {
-//       console.log("server running");
-//     });
+    https.get("https://node-rest-api-0p1t.onrender.com/", () => {
+      console.log("server running");
+    });
   }, 25 * 60 * 1000);
 
   setInterval(async function () {
