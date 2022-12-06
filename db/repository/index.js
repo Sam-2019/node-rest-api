@@ -22,15 +22,21 @@ const getTimeout = async () => {
 };
 
 const getDataIDS = async () => {
-  return await Model.find({ bank_id: null, message: null });
+  try {
+    return await Model.find({ bank_id: null, message: null });
+  } catch (error) {}
 };
 
 const getFailedIDS = async () => {
-  return await Model.find({ message: MESSAGE, is_momo_active: false });
+  try {
+    return await Model.find({ message: MESSAGE, is_momo_active: false });
+  } catch (error) {}
 };
 
 const getMomoStatus = async (data) => {
-  return await Model.find({ is_momo_active: data });
+  try {
+    return await Model.find({ is_momo_active: data });
+  } catch (error) {}
 };
 
 const getRemaining = async () => {
@@ -43,15 +49,21 @@ const getRemaining = async () => {
 };
 
 const getAll = async () => {
-  return await Model.find();
+  try {
+    return await Model.find();
+  } catch (error) {}
 };
 
 const getOne = async (phone) => {
-  return await Model.findOne({ number: phone });
+  try {
+    return await Model.findOne({ number: phone });
+  } catch (error) {}
 };
 
 const getFailedWithIDS = async (data) => {
-  return await Model.find({ bank_id: data, message: MESSAGE });
+  try {
+    return await Model.find({ bank_id: data, message: MESSAGE });
+  } catch (error) {}
 };
 
 const clearMessage = async (data) => {
@@ -151,6 +163,7 @@ module.exports = {
   getTimeout,
   getDataIDS,
   getFailedIDS,
+  getMomoStatus,
   getRemaining,
   getAll,
   getOne,
