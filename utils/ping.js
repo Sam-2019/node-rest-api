@@ -16,9 +16,9 @@ async function pingHellio() {
 
 function ping() {
   setInterval(() => {
-    https.get("https://node-rest-api-0p1t.onrender.com/", () => {
-      console.log("server running");
-    });
+//     https.get("https://node-rest-api-0p1t.onrender.com/", () => {
+//       console.log("server running");
+//     });
   }, 25 * 60 * 1000);
 
   setInterval(async function () {
