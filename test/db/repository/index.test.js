@@ -1,3 +1,6 @@
+require("dotenv").config();
+const mongoose = require("mongoose");
+const { DB_URI } = require("../../../utils/config");
 const {
   getSaved,
   getFailed,
@@ -10,56 +13,154 @@ const {
   getOne,
   getFailedWithIDS,
 } = require("../../../db/repository");
+const { mock_data } = require("../../../utils/mock_data.js");
 
 describe("On db connection failure", () => {
-  test("should not count saved", async () => {
+  test("count saved", async () => {
     let result = await getSaved();
-    console.log(result);
-    // expect(result).toBeUndefined();
+    expect(result).toBeUndefined();
   });
 
-  test("should not count failed", async () => {
+  test("count failed", async () => {
     let result = await getFailed();
     expect(result).toBeUndefined();
   });
 
-  test("should not count timeout", async () => {
+  test("count timeout", async () => {
     let result = await getTimeout();
     expect(result).toBeUndefined();
   });
 
-  test("should not fetch data with IDs", async () => {
+  test("fetch data with IDs", async () => {
     let result = await getDataIDS();
     expect(result).toBeUndefined();
   });
 
-  test("should not fetch get failed IDs", async () => {
+  test("fetch get failed IDs", async () => {
     let result = await getFailedIDS();
     expect(result).toBeUndefined();
   });
 
-  test("should not fetch get momo status", async () => {
+  test("fetch get momo status", async () => {
     let result = await getMomoStatus();
     expect(result).toBeUndefined();
   });
 
-  test("should not fetch get remaining", async () => {
+  test("fetch get remaining", async () => {
     let result = await getRemaining();
     expect(result).toBeUndefined();
   });
 
-  test("should not fetch get all records", async () => {
+  test("fetch get all records", async () => {
     let result = await getAll();
     expect(result).toBeUndefined();
   });
 
-  test("should not fetch get one record", async () => {
+  test("fetch get one record", async () => {
     let result = await getOne();
     expect(result).toBeUndefined();
   });
 
-  test("should not fetch get failed with IDS", async () => {
+  test("fetch get failed with IDS", async () => {
     let result = await getFailedWithIDS();
     expect(result).toBeUndefined();
+  });
+});
+
+describe("On db connection success", () => {
+  beforeAll(async () => {
+    mongoose.connect(DB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      autoIndex: false,
+    });
+  });
+
+  afterAll(async () => {
+    mongoose.connection.close();
+  });
+
+  test("get saved", async () => {
+    let result = await getSaved();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+  });
+
+  test("get failed", async () => {
+    let result = await getFailed();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+  });
+
+  test("get timeout", async () => {
+    let result = await getTimeout();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+  });
+
+  test("fetch data with IDs", async () => {
+    let result = await getDataIDS();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+  });
+
+  test("fetch get failed IDs", async () => {
+    let result = await getFailedIDS();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+  });
+
+  test("fetch get momo status", async () => {
+    let result = await getMomoStatus();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+  });
+
+  test("fetch get remaining", async () => {
+    let result = await getRemaining();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+  });
+
+  test("fetch get all records", async () => {
+    let result = await getAll();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+  });
+
+  test("dont fetch one record without a number", async () => {
+    let result = await getOne();
+    expect(result).toBeNull();
+    expect(result).toBeFalsy();
+    // console.log(result);
+  });
+
+  test("fetch one record with a valid number", async () => {
+    let result = await getOne(mock_data.number);
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+    // console.log(result);
+  });
+
+  test("fetch one record with an invalid valid number", async () => {
+    let invalid_number = "0240586043";
+    let result = await getOne(invalid_number);
+    expect(result).toBeNull();
+    expect(result).toBeFalsy();
+    // console.log(result);
+  });
+
+  test("fetch get failed with IDS", async () => {
+    let result = await getFailedWithIDS();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
   });
 });
