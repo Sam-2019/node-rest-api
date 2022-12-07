@@ -11,3 +11,4 @@ yarn-error.log
 utils/waste.txt
 coverage
 test/db/test waste.txt
+utils/mock_data.js
