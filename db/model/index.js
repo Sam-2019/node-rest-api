@@ -1,6 +1,6 @@
 const Attendees = require("../model/attendee");
 const Numbers = require("../model/number");
-const identity = require("./identity");
+const Identity = require("./identity");
 
 const model = (type) => {
   let model;
@@ -15,7 +15,7 @@ const model = (type) => {
       break;
 
     case "identity":
-      model = identity;
+      model = Identity;
       break;
 
     default:
