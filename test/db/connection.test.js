@@ -2,7 +2,7 @@ require("dotenv").config();
 const { ACTIVE_MODEL } = require("../../utils/config");
 const { model } = require("../../db/model");
 const Model = model(ACTIVE_MODEL);
-const { mock_data } = require("../../utils/mock_mock_data");
+const { mock_data } = require("../../utils/mock_data");
 const { connectDB, disconnectDB } = require("../../db");
 
 describe("Connection", () => {
