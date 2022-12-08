@@ -13,52 +13,42 @@ const {
 
 describe("On db connection failure", () => {
   test("count saved", async () => {
-    let result = await getSaved();
-    expect(result).toBeUndefined();
+    return getSaved().catch(e => expect(e).toMatch('error'));
   });
 
   test("count failed", async () => {
-    let result = await getFailed();
-    expect(result).toBeUndefined();
+    return getFailed().catch(e => expect(e).toMatch('error'));
   });
 
   test("count timeout", async () => {
-    let result = await getTimeout();
-    expect(result).toBeUndefined();
+    return getTimeout().catch(e => expect(e).toMatch('error'));
   });
 
   test("fetch data with IDs", async () => {
-    let result = await getDataIDS();
-    expect(result).toBeUndefined();
+    return getDataIDS().catch(e => expect(e).toMatch('error'));
   });
 
   test("fetch get failed IDs", async () => {
-    let result = await getFailedIDS();
-    expect(result).toBeUndefined();
+    return getFailedIDS().catch(e => expect(e).toMatch('error'));
   });
 
   test("fetch get momo status", async () => {
-    let result = await getMomoStatus();
-    expect(result).toBeUndefined();
+    return getMomoStatus().catch(e => expect(e).toMatch('error'));
   });
 
   test("fetch get remaining", async () => {
-    let result = await getRemaining();
-    expect(result).toBeUndefined();
+    return getRemaining().catch(e => expect(e).toMatch('error'));
   });
 
   test("fetch get all records", async () => {
-    let result = await getAll();
-    expect(result).toBeUndefined();
+    return getAll().catch(e => expect(e).toMatch('error'));
   });
 
   test("fetch get one record", async () => {
-    let result = await getOne();
-    expect(result).toBeUndefined();
+    return getOne().catch(e => expect(e).toMatch('error'));
   });
 
   test("fetch get failed with IDS", async () => {
-    let result = await getFailedWithIDS();
-    expect(result).toBeUndefined();
+    return getFailedWithIDS().catch(e => expect(e).toMatch('error'));
   });
 });
