@@ -42,11 +42,7 @@ test("get_remaining action", async () => {
 });
 
 test("hellio action", async () => {
-  // const result = await getInfo('hellio');
-  // expect(result.text).toBeNull();
-  // expect(result.text).toBeFalsy();
-  // expect(result.model).toBeUndefined();
-  // expect(() => result.model()).toThrow(Error);
+  return getInfo('hellio').catch(e => expect(e).toMatch('error'));
 });
 
 test("app ping", async () => {
