@@ -7,7 +7,7 @@ test("array items to match telco id", () => {
 });
 
 test("return telco bankcode", () => {
-  const mtn_number = "0244291833";
+  const mtn_number = "0242586043";
   const airteltigo_number = "0272586043";
   const vodafone_number = "0202586043";
 
