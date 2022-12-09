@@ -1,32 +1,31 @@
 const axios = require("axios");
 const { SET_INTERVAL } = require("./config");
-const { HELIOSDOWN, HELIOSUP, HELIOSURL } = require("./constants");
+const {
+  HELIOSDOWN,
+  HELIOSUP,
+  HELIOSURL,
+  SERVERDOWN,
+  SERVERUP,
+  SERVERURL,
+} = require("./constants");
 
 async function pingHellio() {
-  axios
+  return axios
     .get(HELIOSURL)
-    .then(() => {
-      console.log(HELIOSUP);
-    })
-    .catch((error) => {
-      console.log(HELIOSDOWN);
-    });
+    .then((res) => HELIOSUP)
+    .catch((error) => HELIOSDOWN);
 }
 
 async function pingServer() {
-  axios
-    .get('https://name-node-rest-api.herokuapp.com/')
-    .then(() => {
-      console.log('server running');
-    })
-    .catch((error) => {
-      console.log('server down');
-    });
+  return axios
+    .get(SERVERURL)
+    .then((res) => SERVERUP)
+    .catch((error) => SERVERDOWN);
 }
 
 function ping() {
   setInterval(async () => {
-    pingServer()
+    pingServer();
   }, 25 * 60 * 1000);
 
   setInterval(async function () {
@@ -37,4 +36,5 @@ function ping() {
 module.exports = {
   ping,
   pingHellio,
+  pingServer,
 };
