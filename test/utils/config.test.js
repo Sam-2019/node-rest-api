@@ -10,7 +10,7 @@ const {
   TRUECALLER,
   AUTH_KEY,
   ACTIVE_MODEL,
-} = require("../utils/config");
+} = require("../../utils/config");
 
 test("validates db_uri", () => {
   expect(DB_URI).not.toBeNull();
