@@ -9,6 +9,12 @@ const {
   getAll,
   getOne,
   getFailedWithIDS,
+  clearMessage,
+  addMomoActiveForInactiveNumbers,
+  addMomoActiveForActiveNumbers,
+  updateValidNumber,
+  updateInvalidNumber,
+  timeoutCleanup,
 } = require("../../../db/repository");
 
 describe("On db connection failure", () => {
@@ -50,5 +56,33 @@ describe("On db connection failure", () => {
 
   test("fetch get failed with IDS", async () => {
     return getFailedWithIDS().catch((e) => expect(e).toMatch("error"));
+  });
+
+  test("clear message field", async () => {
+    return clearMessage().catch((e) => expect(e).toMatch("error"));
+  });
+
+  test("add momo_active field for active number", async () => {
+    return addMomoActiveForInactiveNumbers().catch((e) =>
+      expect(e).toMatch("error")
+    );
+  });
+
+  test("add momo_active field for inactive number", async () => {
+    return addMomoActiveForActiveNumbers().catch((e) =>
+      expect(e).toMatch("error")
+    );
+  });
+
+  test("update valid numbers", async () => {
+    return updateValidNumber().catch((e) => expect(e).toMatch("error"));
+  });
+
+  test("update invalid numbers", async () => {
+    return updateInvalidNumber().catch((e) => expect(e).toMatch("error"));
+  });
+
+  test("clean timeout message", async () => {
+    return timeoutCleanup().catch((e) => expect(e).toMatch("error"));
   });
 });
