@@ -12,6 +12,12 @@ const {
   getAll,
   getOne,
   getFailedWithIDS,
+  clearMessage,
+  addMomoActiveForInactiveNumbers,
+  addMomoActiveForActiveNumbers,
+  updateValidNumber,
+  updateInvalidNumber,
+  timeoutCleanup,
 } = require("../../../db/repository");
 const { mock_data } = require("../../../utils/mock_data.js");
 
@@ -39,7 +45,6 @@ describe("On db connection success", () => {
     let result = await getFailed();
     expect(result).not.toBeNull();
     expect(result).toBeDefined();
-    expect(result).toBeTruthy();
   });
 
   test("get timeout", async () => {
@@ -103,7 +108,6 @@ describe("On db connection success", () => {
     let result = await getOne();
     expect(result).toBeNull();
     expect(result).toBeFalsy();
-    // console.log(result);
   });
 
   test("fetch one record with a valid number", async () => {
@@ -111,7 +115,6 @@ describe("On db connection success", () => {
     expect(result).not.toBeNull();
     expect(result).toBeDefined();
     expect(result).toBeTruthy();
-    // console.log(result);
   });
 
   test("fetch one record with an invalid valid number", async () => {
@@ -119,7 +122,6 @@ describe("On db connection success", () => {
     let result = await getOne(invalid_number);
     expect(result).toBeNull();
     expect(result).toBeFalsy();
-    // console.log(result);
   });
 
   test("fetch failed with IDS", async () => {
@@ -127,5 +129,37 @@ describe("On db connection success", () => {
     expect(result).not.toBeNull();
     expect(result).toBeDefined();
     expect(result).toBeTruthy();
+  });
+
+  test("clear message field", async () => {
+    let result = await clearMessage();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
+  });
+
+  test("add momo_active field for active number", async () => {
+    let result = await addMomoActiveForActiveNumbers();
+    expect(result).not.toBeNull();
+  });
+
+  test("add momo_active field for inactive number", async () => {
+    let result = await addMomoActiveForInactiveNumbers();
+    expect(result).not.toBeNull();
+  });
+
+  test("update valid numbers", async () => {
+    let result = await updateValidNumber();
+    expect(result).not.toBeNull();
+  });
+
+  test("update invalid numbers", async () => {
+    let result = await updateInvalidNumber();
+    expect(result).not.toBeNull();
+  });
+
+  test("clean timeout message", async () => {
+    let result = await timeoutCleanup();
+    expect(result).not.toBeNull();
   });
 });
