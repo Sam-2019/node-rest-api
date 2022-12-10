@@ -23,18 +23,20 @@ async function pingServer() {
     .catch((error) => SERVERDOWN);
 }
 
-function ping() {
-  setInterval(async () => {
-    pingServer();
-  }, 25 * 60 * 1000);
-
+function pinger(callback, timer = SET_INTERVAL) {
   setInterval(async function () {
-    await pingHellio();
-  }, SET_INTERVAL);
+    await callback();
+  }, timer);
+}
+
+function ping() {
+  pinger(pingServer, 25 * 60 * 1000);
+  pinger(pingHellio);
 }
 
 module.exports = {
   ping,
   pingHellio,
   pingServer,
+  pinger,
 };
