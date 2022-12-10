@@ -67,94 +67,90 @@ const getFailedWithIDS = async (data) => {
 };
 
 const clearMessage = async (data) => {
-  return await Model.updateMany(
-    { bank_id: data, message: MESSAGE },
-    { message: null }
-  );
+  try {
+    return await Model.updateMany(
+      { bank_id: data, message: MESSAGE },
+      { message: null }
+    );
+  } catch (error) {}
 };
 
 const addMomoActiveForInactiveNumbers = async () => {
   const data = await getMomoStatus(false);
   if (data) return;
 
-  const res = await Model.updateMany(
-    {
-      message: MESSAGE,
-    },
-    { is_momo_active: false }
-  );
-  console.log("//INACTIVE");
-  console.log(
-    res.matchedCount,
-    res.modifiedCount,
-    res.acknowledged,
-    res.upsertedId,
-    res.upsertedCount
-  );
+  try {
+    await Model.updateMany(
+      {
+        message: MESSAGE,
+      },
+      { is_momo_active: false }
+    );
+  } catch (error) {}
 };
 
 const addMomoActiveForActiveNumbers = async () => {
   const data = await getMomoStatus(true);
   if (data) return;
 
-  const res = await Model.updateMany(
-    {
-      bank_id: {
-        $in: justBankIDs,
+  try {
+    await Model.updateMany(
+      {
+        bank_id: {
+          $in: justBankIDs,
+        },
       },
-    },
-    { is_momo_active: true }
-  );
-  console.log("//ACTIVE");
-  console.log(
-    res.matchedCount,
-    res.modifiedCount,
-    res.acknowledged,
-    res.upsertedId,
-    res.upsertedCount
-  );
+      { is_momo_active: true }
+    );
+  } catch (error) {}
 };
 
 const updateValidNumber = async (body, newInfo) => {
-  await Model.findByIdAndUpdate(
-    newInfo[0].id,
-    {
-      $set: {
-        name: body.data.account_name,
-        account_number: body.data.account_number,
-        bank_id: body.data.bank_id,
-        is_momo_active: true,
+  try {
+    await Model.findByIdAndUpdate(
+      newInfo[0].id,
+      {
+        $set: {
+          name: body.data.account_name,
+          account_number: body.data.account_number,
+          bank_id: body.data.bank_id,
+          is_momo_active: true,
+        },
       },
-    },
-    {
-      new: false,
-    }
-  );
+      {
+        new: false,
+      }
+    );
+  } catch (error) {}
 };
 
 const updateInvalidNumber = async (error, newInfo) => {
-  await Model.findByIdAndUpdate(
-    newInfo[0].id,
-    {
-      $set: {
-        message: error.error.message,
-        is_momo_active: false,
+  try {
+    await Model.findByIdAndUpdate(
+      newInfo[0].id,
+      {
+        $set: {
+          message: error.error.message,
+          is_momo_active: false,
+        },
       },
-    },
-    {
-      new: false,
-    }
-  );
+      {
+        new: false,
+      }
+    );
+  } catch (error) {}
 };
 
 const timeoutCleanup = async () => {
   const count = await getTimeout();
   if (count === 0) return;
 
-  return await Model.updateMany(
-    { message: TIMEOUT },
-    { message: null, is_momo_active: null }
-  );
+  try {
+    return await Model.updateMany(
+      { message: TIMEOUT },
+      { message: null, is_momo_active: null }
+    );
+  } catch (error) {}
 };
 
 module.exports = {
