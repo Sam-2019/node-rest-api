@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { pingHellio, pingServer } = require("../../utils/ping");
+const { pingHellio, pingServer, ping } = require("../../utils/ping");
 const {
   HELIOSUP,
   HELIOSDOWN,
@@ -49,4 +49,20 @@ describe("On pingServer", () => {
       return expect(data).toEqual(SERVERDOWN);
     }
   });
+});
+
+test("should run ping", async () => {
+  expect(ping()).toBeUndefined();
+});
+
+jest.useFakeTimers();
+it("calls the callback after 1 second via advanceTimersByTime", () => {
+  const { pinger } = require("../../utils/ping");
+  const callback = jest.fn();
+
+  pinger(callback);
+  expect(callback).not.toBeCalled();
+  jest.advanceTimersByTime(1000);
+  expect(callback).toBeCalled();
+  expect(callback).toHaveBeenCalledTimes(1);
 });
