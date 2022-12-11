@@ -30,5 +30,9 @@ jobs:
       uses: borales/actions-yarn@v4
       with:
         cmd: install # will run `yarn install` command
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.8.0
+      with: 
+        mongodb-version: ${{ matrix.monodb-version }}
     - run: node -v
     - run: yarn -v
