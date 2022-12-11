@@ -6,6 +6,7 @@ name: Node.js CI
 on:
   push:
     branches: [ "develop" ]
+    branches: [ "test" ]
   pull_request:
     branches: [ "main" ]
 
@@ -17,6 +18,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18]
+        mongodb-version: ['5.0']
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
