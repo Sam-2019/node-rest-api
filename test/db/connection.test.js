@@ -15,8 +15,10 @@ describe("Connection", () => {
   });
 
   test("Retrieve attendee by Id", async () => {
-    const attendee = await Model.findById(mock_data.id);
-    expect(attendee.id).toBe(mock_data.id);
+    const new_attendee = await new Model(mock_data).save();
+
+    const attendee = await Model.findById(new_attendee.id);
+    expect(attendee.id).toBe(new_attendee.id);
     expect(attendee.mobile_number).toBe(mock_data.mobile_number);
     expect(attendee.number).toBe(mock_data.number);
     expect(attendee.message).toBeNull();
