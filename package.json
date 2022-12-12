@@ -11,7 +11,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@shelf/jest-mongodb": "^4.1.4",
     "@slack/webhook": "^6.1.0",
     "awesome-phonenumber": "^3.3.0",
     "axios": "^0.27.2",
@@ -24,6 +23,7 @@
     "truecallerjs": "^1.1.1"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^4.1.4",
     "jest": "^29.3.1",
     "nodemon": "^2.0.19"
   }
