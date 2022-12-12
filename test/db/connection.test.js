@@ -14,17 +14,17 @@ describe("Connection", () => {
     disconnectDB();
   });
 
-  test("Retrieve attendee by Id", async () => {
-    const new_attendee = await new Model(mock_data).save();
+  test("Retrieve user by Id", async () => {
+    const new_user = await new Model(mock_data).save();
 
-    const attendee = await Model.findById(new_attendee.id);
-    expect(attendee.id).toBe(new_attendee.id);
-    expect(attendee.mobile_number).toBe(mock_data.mobile_number);
-    expect(attendee.number).toBe(mock_data.number);
-    expect(attendee.message).toBeNull();
-    expect(attendee.account_number).toBe(mock_data.account_number);
-    expect(attendee.bank_id).toBe(mock_data.bank_id);
-    expect(attendee.is_momo_active).toBeTruthy();
-    expect(attendee.name).toBe(mock_data.name);
+    const user = await Model.findById(new_user.id);
+    expect(user.id).toBe(new_user.id);
+    expect(user.mobile_number).toBe(mock_data.mobile_number);
+    expect(user.number).toBe(mock_data.number);
+    expect(user.message).toBeNull();
+    expect(user.account_number).toBe(mock_data.account_number);
+    expect(user.bank_id).toBe(mock_data.bank_id);
+    expect(user.is_momo_active).toBeTruthy();
+    expect(user.name).toBe(mock_data.name);
   });
 });
