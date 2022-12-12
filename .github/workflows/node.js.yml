@@ -35,5 +35,7 @@ jobs:
         cmd: install # will run `yarn install` command
     - name: MongoDB in GitHub Actions
       uses: supercharge/mongodb-github-action@1.8.0
+      with:
+        node-version: ${{ matrix.mongodb-version }}      
     - run: node -v
     - run: yarn -v
