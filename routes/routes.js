@@ -10,15 +10,12 @@ const { addIdentity, getIdentity } = require("../db/repository/identity");
 //Get all Method
 router.get("/names", async (req, res) => {
   try {
-    // const data = await getAll();
-
-    // if (!data) {
-    //   res.json({ message: "Konnichiwa" });
-    // } else {
-    //   res.json(data);
-    // }
-
-    res.json("Konnichiwa");
+//     const data = await getAll();
+//     if (data) {
+//       return res.json(data);
+//     } 
+    
+    res.json({ message: "Konnichiwa" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -27,15 +24,12 @@ router.get("/names", async (req, res) => {
 // Get by ID Method
 router.get("/get_name/:id", async (req, res) => {
   try {
-    // const data = await getOne(req.params.id);
+//     const data = await getOne(req.params.id);
+//     if (data.name) {
+//      res.json(data);
+//     }
 
-    // if (!data.name) {
-    //   res.json({ message: "Konnichiwa" });
-    // } else {
-    //   res.json(data);
-    // }
-
-    res.json("Konnichiwa");
+    res.json({ message: "Konnichiwa" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -44,15 +38,12 @@ router.get("/get_name/:id", async (req, res) => {
 // Get all Method
 router.get("/get_saved", async (req, res) => {
   try {
-    // const data = await getSaved();
+//     const data = await getSaved();
+//      if (data) {
+//      res.json(data);
+//     }
 
-    // if (!data) {
-    //   res.json({ message: "Konnichiwa" });
-    // } else {
-    //   res.json(data);
-    // }
-
-    res.json("Konnichiwa");
+    res.json({ message: "Konnichiwa" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -62,7 +53,7 @@ router.get("/id/:id", async (req, res) => {
   const authorization = req.headers.authorization;
 
   if (authorization != AUTH_KEY) {
-    return res.json("Konnichiwa");
+    return res.json({ message: "Konnichiwa" });
   }
 
   let countryCode = "GH";
