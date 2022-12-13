@@ -37,8 +37,8 @@ jobs:
       uses: supercharge/mongodb-github-action@1.8.0
       with:
         node-version: ${{ matrix.mongodb-version }}
-        mongodb-port: ${{ env.MONGO_PORT }}
-    - run: echo "Hello $MONGO_PORT"
+        mongodb-port: ${{ secrets.MONGO_PORT }}
+    - run: echo "Hello ${{secrets.MONGO_PORT}}"
     - run: node -v
     - run: yarn -v
     - name: Run Test
