@@ -39,6 +39,20 @@ jobs:
         node-version: ${{ matrix.mongodb-version }}
         mongodb-port: ${{ secrets.MONGO_PORT }}
     - run: echo "Hello ${{secrets.MONGO_PORT}}"
+    - run: echo "Hello ${{secrets.DB_URI}}"
+    - name: create env file
+      run: |
+        touch .env
+        echo DB_URI=${{ secrets.DB_URI }} >> .env
+        echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
+        echo NIMBLE=${{ secrets.NIMBLE }} >> .env
+        echo PORT=${{ secrets.PORT }} >> .env
+        echo SLACK_WEBHOOK=${{ secrets.SLACK_WEBHOOK }} >> .env
+        echo SET_INTERVAL=${{ secrets.SET_INTERVAL }} >> .env
+        echo TOKEN=${{ secrets.TOKEN }} >> .env
+        echo TRUECALLER=${{ secrets.TRUECALLER }} >> .env
+        echo AUTH_KEY=${{ secrets.AUTH_KEY }} >> .env
+        echo ACTIVE_MODEL=${{ secrets.ACTIVE_MODEL }} >> .env
     - run: node -v
     - run: yarn -v
     - name: Run Test
