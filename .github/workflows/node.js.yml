@@ -49,7 +49,7 @@ jobs:
         echo PORT=${{ secrets.PORT }} >> .env
         echo SLACK_WEBHOOK=${{ secrets.SLACK_WEBHOOK }} >> .env
         echo SET_INTERVAL=${{ secrets.SET_INTERVAL }} >> .env
-        echo TOKEN=${{ secrets.TOKEN }} >> .env
+        echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env
         echo TRUECALLER=${{ secrets.TRUECALLER }} >> .env
         echo AUTH_KEY=${{ secrets.AUTH_KEY }} >> .env
         echo ACTIVE_MODEL=${{ secrets.ACTIVE_MODEL }} >> .env
