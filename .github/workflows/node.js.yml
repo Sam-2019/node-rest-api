@@ -38,8 +38,6 @@ jobs:
       with:
         node-version: ${{ matrix.mongodb-version }}
         mongodb-port: ${{ secrets.MONGO_PORT }}
-    - run: echo "Hello ${{secrets.MONGO_PORT}}"
-    - run: echo "Hello ${{secrets.DB_URI}}"
     - name: create env file
       run: |
         touch .env
