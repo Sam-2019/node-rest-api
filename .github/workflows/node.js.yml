@@ -54,4 +54,4 @@ jobs:
     - run: node -v
     - run: yarn -v
     - name: Run Test
-      run: yarn test test/utils/config.test.js
+      run: yarn test
