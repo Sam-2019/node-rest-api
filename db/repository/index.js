@@ -3,6 +3,12 @@ const { model } = require("../model");
 const { ACTIVE_MODEL } = require("../../utils/config");
 const Model = model(ACTIVE_MODEL);
 
+const saveItem = async (data) => {
+  try {
+    return await new Model(data).save();
+  } catch (error) {}
+};
+
 const getSaved = async () => {
   try {
     return await Model.find({ is_momo_active: true }).countDocuments();
@@ -154,6 +160,7 @@ const timeoutCleanup = async () => {
 };
 
 module.exports = {
+  saveItem,
   getSaved,
   getFailed,
   getTimeout,
