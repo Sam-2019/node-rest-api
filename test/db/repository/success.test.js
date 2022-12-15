@@ -30,17 +30,24 @@ describe("On db connection success", () => {
       autoIndex: false,
     });
 
-
-    await saveItem(mock_data)
+    await saveItem(mock_data);
   });
 
   afterAll(async () => {
     mongoose.connection.close();
   });
 
+  test("save item", async () => {
+    let result = await saveItem(mock_data);
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeDefined();
+  });
+
   test("get saved", async () => {
     let result = await getSaved();
     expect(result).not.toBeNull();
+    expect(result).toBeDefined();
     expect(result).toBeDefined();
   });
 
@@ -115,10 +122,9 @@ describe("On db connection success", () => {
 
   test("fetch one record with a valid number", async () => {
     let result = await getOne(mock_data.number);
-    console.log({result})
-    // expect(result).not.toBeNull();
-    // expect(result).toBeDefined();
-    // expect(result).toBeTruthy();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
+    expect(result).toBeTruthy();
   });
 
   test("fetch one record with an invalid valid number", async () => {
