@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const { DB_URI } = require("../../../utils/config");
 const {
+  saveItem,
   getSaved,
   getFailed,
   getTimeout,
@@ -28,6 +29,9 @@ describe("On db connection success", () => {
       useUnifiedTopology: true,
       autoIndex: false,
     });
+
+
+    await saveItem(mock_data)
   });
 
   afterAll(async () => {
@@ -36,10 +40,8 @@ describe("On db connection success", () => {
 
   test("get saved", async () => {
     let result = await getSaved();
-    console.log({result})
-    // expect(result).not.toBeNull();
-    // expect(result).toBeDefined();
-    // expect(result).toBeTruthy();
+    expect(result).not.toBeNull();
+    expect(result).toBeDefined();
   });
 
   test("get failed", async () => {
