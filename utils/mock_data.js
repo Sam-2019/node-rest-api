@@ -8,6 +8,16 @@ const mock_data = {
   name: "MIKE CUI",
 };
 
+const identity_mock_data = {
+  name: "Asamoah Kudus",
+  other_name: "Pure Joy",
+  email: "asakudus@gmail.com",
+  gender: "male",
+  account_number: "0200737173",
+  bank_id: "66",
+};
+
 module.exports = {
   mock_data,
+  identity_mock_data,
 };
