@@ -55,3 +55,19 @@ jobs:
     - run: yarn -v
     - name: Run Test
       run: yarn test
+    - name: Upload test logs
+      if: failure()
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: test-logs
+        path: log/
+    - name: Upload coverage results
+      if: success()
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: code-coverage
+        path: coverage/
+    - name: Download all workflow run artifacts
+      uses: actions/download-artifact@v3.0.1
+      with:
+        path: artifacts/
