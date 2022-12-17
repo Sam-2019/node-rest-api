@@ -3,7 +3,7 @@ const { DB_URI } = require("../utils/config");
 
 var dbConn = mongoose.connection;
 dbConn.on("connected", function () {
-  console.log("Mongoose connected");
+  // console.log("Mongoose connected");
 });
 
 const connectDB = () => {
