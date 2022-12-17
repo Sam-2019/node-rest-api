@@ -5,7 +5,7 @@ const Model = model(ACTIVE_MODEL);
 
 const saveItem = async (data) => {
   try {
-    return await new Model(data).save();
+    return await Model(data).save();
   } catch (error) {}
 };
 
