@@ -10,11 +10,11 @@ const { addIdentity, getIdentity } = require("../db/repository/identity");
 //Get all Method
 router.get("/names", async (req, res) => {
   try {
-//     const data = await getAll();
-//     if (data) {
-//       return res.json(data);
-//     } 
-    
+    //     const data = await getAll();
+    //     if (data) {
+    //       return res.json(data);
+    //     }
+
     res.json({ message: "Konnichiwa" });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -24,10 +24,10 @@ router.get("/names", async (req, res) => {
 // Get by ID Method
 router.get("/get_name/:id", async (req, res) => {
   try {
-//     const data = await getOne(req.params.id);
-//     if (data.name) {
-//      res.json(data);
-//     }
+    //     const data = await getOne(req.params.id);
+    //     if (data.name) {
+    //      res.json(data);
+    //     }
 
     res.json({ message: "Konnichiwa" });
   } catch (error) {
@@ -38,10 +38,10 @@ router.get("/get_name/:id", async (req, res) => {
 // Get all Method
 router.get("/get_saved", async (req, res) => {
   try {
-//     const data = await getSaved();
-//      if (data) {
-//      res.json(data);
-//     }
+    //     const data = await getSaved();
+    //      if (data) {
+    //      res.json(data);
+    //     }
 
     res.json({ message: "Konnichiwa" });
   } catch (error) {
