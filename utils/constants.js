@@ -9,6 +9,9 @@ const HELIOSUP = "HellioSMS: server is up";
 const HELIOSURL = "https://helliomessaging.com";
 const TIMEOUT = "Endpoint request timed out";
 const ENOTFOUND = "getaddrinfo ENOTFOUND api.paystack.co";
+const SERVERURL = "https://name-node-rest-api.herokuapp.com";
+const SERVERDOWN = "server is down";
+const SERVERUP = "server is up";
 
 const telco = {
   mtn: {
@@ -58,6 +61,10 @@ module.exports = {
   HELIOSURL,
   TIMEOUT,
   ENOTFOUND,
+  SERVERURL,
+  SERVERDOWN,
+  SERVERUP,
+  telco,
   justBankIDs,
   getData,
 };

@@ -1,25 +1,9 @@
 require("dotenv").config();
-const cors = require("cors");
-const express = require("express");
+const app = require('./app');
 const { PORT, NODE_ENV } = require("./utils/config");
-const { shuffleRunner } = require("./utils/runner");
-const { bot } = require("./utils/telegraf");
-const { ping } = require("./utils/ping");
-const { clearTimeout } = require("./utils/dbCleanup");
+const { services } = require("./utils/services");
 
-require("./db/index");
-
-const app = express();
-app.use(cors({ origin: true, credentials: true }));
-app.use(express.json());
-
-const routes = require("./routes/routes");
-app.use("/api", routes);
-
-shuffleRunner();
-ping();
-bot.launch();
-clearTimeout();
+services();
 
 const port = PORT || 4000;
 

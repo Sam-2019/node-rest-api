@@ -1,55 +1,10 @@
-const express = require("express");
-const router = express.Router();
 const { AUTH_KEY } = require("../utils/config");
 const { getData } = require("../utils/constants");
 const { stack, caller } = require("../utils/identity");
 const { parsePhoneNumber } = require("awesome-phonenumber");
-const { getOne, getAll, getSaved } = require("../db/repository");
 const { addIdentity, getIdentity } = require("../db/repository/identity");
 
-//Get all Method
-router.get("/names", async (req, res) => {
-  try {
-    //     const data = await getAll();
-    //     if (data) {
-    //       return res.json(data);
-    //     }
-
-    res.json({ message: "Konnichiwa" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Get by ID Method
-router.get("/get_name/:id", async (req, res) => {
-  try {
-    //     const data = await getOne(req.params.id);
-    //     if (data.name) {
-    //      res.json(data);
-    //     }
-
-    res.json({ message: "Konnichiwa" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Get all Method
-router.get("/get_saved", async (req, res) => {
-  try {
-    //     const data = await getSaved();
-    //      if (data) {
-    //      res.json(data);
-    //     }
-
-    res.json({ message: "Konnichiwa" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-router.get("/id/:id", async (req, res) => {
+const getID = async (req, res) => {
   const authorization = req.headers.authorization;
 
   if (authorization != AUTH_KEY) {
@@ -107,5 +62,6 @@ router.get("/id/:id", async (req, res) => {
   addIdentity(output);
 
   return res.json(output);
-});
-module.exports = router;
+};
+
+module.exports = { getID };

@@ -1,32 +1,42 @@
-const https = require("node:https");
 const axios = require("axios");
 const { SET_INTERVAL } = require("./config");
-const { HELIOSDOWN, HELIOSUP, HELIOSURL, HELIOSMS } = require("./constants");
+const {
+  HELIOSDOWN,
+  HELIOSUP,
+  HELIOSURL,
+  SERVERDOWN,
+  SERVERUP,
+  SERVERURL,
+} = require("./constants");
 
 async function pingHellio() {
-  axios
+  return axios
     .get(HELIOSURL)
-    .then(() => {
-      console.log(HELIOSUP);
-    })
-    .catch((error) => {
-      console.log(HELIOSDOWN);
-    });
+    .then((res) => HELIOSUP)
+    .catch((error) => HELIOSDOWN);
+}
+
+async function pingServer() {
+  return axios
+    .get(SERVERURL)
+    .then((res) => SERVERUP)
+    .catch((error) => SERVERDOWN);
+}
+
+function pinger(callback, timer = SET_INTERVAL) {
+  setInterval(async function () {
+    await callback();
+  }, timer);
 }
 
 function ping() {
-  setInterval(() => {
-//     https.get("https://node-rest-api-0p1t.onrender.com/", () => {
-//       console.log("server running");
-//     });
-  }, 25 * 60 * 1000);
-
-  setInterval(async function () {
-    pingHellio();
-  }, SET_INTERVAL);
+  pinger(pingServer, 25 * 60 * 1000);
+  pinger(pingHellio);
 }
 
 module.exports = {
   ping,
   pingHellio,
+  pingServer,
+  pinger,
 };
