@@ -2,7 +2,7 @@ const { model } = require("../../model");
 const Model = model("identity");
 
 const getIdentity = async (phone) => {
-  return await Model.findOne({ number: phone });
+  return await Model.findOne({ account_number: phone });
 };
 
 const addIdentity = async (data) => {

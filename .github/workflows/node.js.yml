@@ -1,0 +1,73 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - 'develop'
+      - 'test'
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18]
+        mongodb-version: ['5.0']
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Run install
+      uses: borales/actions-yarn@v4
+      with:
+        cmd: install # will run `yarn install` command
+    - name: MongoDB in GitHub Actions
+      uses: supercharge/mongodb-github-action@1.8.0
+      with:
+        node-version: ${{ matrix.mongodb-version }}
+        mongodb-port: ${{ secrets.MONGO_PORT }}
+    - name: create env file
+      run: |
+        touch .env
+        echo DB_URI=${{ secrets.DB_URI }} >> .env
+        echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
+        echo NIMBLE=${{ secrets.NIMBLE }} >> .env
+        echo PORT=${{ secrets.PORT }} >> .env
+        echo SLACK_WEBHOOK=${{ secrets.SLACK_WEBHOOK }} >> .env
+        echo SET_INTERVAL=${{ secrets.SET_INTERVAL }} >> .env
+        echo TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} >> .env
+        echo TRUECALLER=${{ secrets.TRUECALLER }} >> .env
+        echo AUTH_KEY=${{ secrets.AUTH_KEY }} >> .env
+        echo ACTIVE_MODEL=${{ secrets.ACTIVE_MODEL }} >> .env
+    - run: node -v
+    - run: yarn -v
+    - name: Run Test
+      run: yarn test
+    - name: Upload test logs
+      if: failure()
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: test-logs
+        path: log/
+    - name: Upload coverage results
+      if: success()
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: code-coverage
+        path: coverage/
+    - name: Download all workflow run artifacts
+      uses: actions/download-artifact@v3.0.1
+      with:
+        path: artifacts/

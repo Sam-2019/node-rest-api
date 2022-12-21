@@ -1,10 +1,16 @@
-const { getSaved, getFailed, getRemaining } = require("../../db/repository");
+const {
+  getSaved,
+  getFailed,
+  getRemaining,
+  getTimeout,
+} = require("../../db/repository");
 const { pingHellio } = require("../ping");
 
-const getInfo = async (command) => {
-  let model; let text;
+const getInfo = async (action) => {
+  let model;
+  let text;
 
-  switch (command) {
+  switch (action) {
     case "saved":
       model = await getSaved();
       text = "Saved";
@@ -13,20 +19,26 @@ const getInfo = async (command) => {
       model = await getFailed();
       text = "Failed";
       break;
+    case "timeout":
+      model = await getTimeout();
+      text = "";
+      break;
     case "rawIDs":
       model = await getRemaining();
       text = "Untouched";
       break;
     case "hellio":
       model = await pingHellio();
-      text = "";
+      text = null;
       break;
     default:
-      model = null; text = "app pinged";
+      model = null;
+      text = "app pinged";
   }
 
   return {
-    model, text,
+    model,
+    text,
   };
 };
 
