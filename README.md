@@ -1,3 +1,3 @@
 # node-rest-api
 
-[![Node.js CI](https://github.com/Sam-2019/node-rest-api/actions/workflows/node.js.yml/badge.svg)](https://github.com/Sam-2019/node-rest-api/actions/workflows/node.js.yml)
+[![Test CI](https://github.com/Sam-2019/node-rest-api/actions/workflows/test-ci.yml/badge.svg?branch=main)](https://github.com/Sam-2019/node-rest-api/actions/workflows/test-ci.yml)
