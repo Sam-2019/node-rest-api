@@ -63,9 +63,6 @@ jobs:
         path: log/
     - name: Upload coverage results
       if: success()
-      - name: Check links with linkcheck
-        uses: filiph/linkcheck@2.0.23
-
       uses: actions/upload-artifact@v3.1.1
       with:
         name: code-coverage
